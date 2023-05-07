@@ -29,7 +29,7 @@
             }
 
             const icon = build_icon();
-            elem.append(icon);
+            elem.append(icon.elem);
             elem.append(build_span());
 
             li.elem.append(elem);
