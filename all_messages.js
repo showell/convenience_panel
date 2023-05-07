@@ -1,12 +1,15 @@
-function style(elem, f, v) {
-    elem.style[f] = v;
-}
-
 {
+    const {build_icon} = window.icon_helpers;
+    const {style_a, setStyles} = window.style_helpers;
+
+
     const demo = document.querySelector("#demo");
+
     const all_messages = build_all_messages(demo);
     wire_up_handlers(all_messages);
     style(all_messages);
+
+
 
     function build_all_messages(demo) {
         function build_li() {
@@ -20,7 +23,17 @@ function style(elem, f, v) {
         function build_main_link(li) {
             const elem = document.createElement("a");
             elem.href = "#all_messages";
-            elem.innerText = "All messages";
+
+            function build_span() {
+                const span = document.createElement("span");
+                span.innerText = "All messages";
+
+                return span;
+            }
+
+            const icon = build_icon();
+            elem.append(icon);
+            elem.append(build_span());
 
             li.elem.append(elem);
     
@@ -47,8 +60,6 @@ function style(elem, f, v) {
     }
 
     function style(all_messages) {
-        const {style_a, setStyles} = window.style_helpers;
-
         setStyles(all_messages.li.elem, {
             paddingLeft: "10px",
             paddingRight: "10px",
