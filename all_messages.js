@@ -11,7 +11,10 @@ function style(elem, f, v) {
     function build_all_messages(demo) {
         function build_li() {
             const elem = document.createElement("li");
-            return elem;
+
+            return {
+                elem,
+            };
         }
 
         function build_main_link(li) {
@@ -19,21 +22,26 @@ function style(elem, f, v) {
             elem.href = "#all_messages";
             elem.innerText = "All messages";
 
-            li.append(elem);
+            li.elem.append(elem);
     
-            return elem;
+            return {
+                elem,
+            };
         }
 
         const li = build_li();
         const main_link = build_main_link(li);
 
-        demo.append(li);
+        demo.append(li.elem);
 
-        return { main_link };
+        return {
+            li,
+            main_link,
+        };
     }
 
     function wire_up_handlers(all_messages) {
-        all_messages.main_link.addEventListener("click", () => {
+        all_messages.main_link.elem.addEventListener("click", () => {
             console.log("click to all_messages view");
         });
     }
@@ -41,12 +49,21 @@ function style(elem, f, v) {
     function style(all_messages) {
         const {style_a, setStyles} = window.style_helpers;
 
-        style_a(all_messages.main_link);
+        setStyles(all_messages.li.elem, {
+            paddingLeft: "10px",
+            paddingRight: "10px",
+            paddingTop: "1px",
+            paddingBottom: "1px",
+        });
+
+        style_a(all_messages.main_link.elem);
         
-        setStyles(all_messages.main_link, {
+        setStyles(all_messages.main_link.elem, {
             marginTop: "1px",
             display: "block",
+            color: "rgb(51, 51, 51)",
         }); 
+
     }
 }
 
