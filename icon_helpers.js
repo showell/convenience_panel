@@ -1,18 +1,17 @@
 window.icon_helpers = (function () {
     const { setStyles } = window.style_helpers;
 
-    function build_top_left_panel_icon({icon_name}) {
+    function build_top_left_panel_icon({ icon_name }) {
         const span = document.createElement("psan");
 
         const icon = document.createElement("i");
 
-        icon.classList.add("fa")
+        icon.classList.add("fa");
         icon.classList.add(icon_name);
         icon.setAttribute("aria-hidden", "true");
 
         span.append(icon);
         const elem = span;
-
 
         setStyles(span, {
             display: "inline-block",
