@@ -1,5 +1,5 @@
 {
-    const { build_icon } = window.icon_helpers;
+    const { build_top_left_panel_icon } = window.icon_helpers;
     const { style_a, setStyles } = window.style_helpers;
 
     const demo = document.querySelector("#demo");
@@ -28,7 +28,10 @@
                 return span;
             }
 
-            const icon = build_icon();
+            const icon = build_top_left_panel_icon({
+                icon_name: "fa-align-left",
+            });
+
             elem.append(icon.elem);
             elem.append(build_span());
 
