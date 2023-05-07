@@ -1,15 +1,12 @@
 {
-    const {build_icon} = window.icon_helpers;
-    const {style_a, setStyles} = window.style_helpers;
-
+    const { build_icon } = window.icon_helpers;
+    const { style_a, setStyles } = window.style_helpers;
 
     const demo = document.querySelector("#demo");
 
     const all_messages = build_all_messages(demo);
     wire_up_handlers(all_messages);
     style(all_messages);
-
-
 
     function build_all_messages(demo) {
         function build_li() {
@@ -36,7 +33,7 @@
             elem.append(build_span());
 
             li.elem.append(elem);
-    
+
             return {
                 elem,
             };
@@ -68,13 +65,11 @@
         });
 
         style_a(all_messages.main_link.elem);
-        
+
         setStyles(all_messages.main_link.elem, {
             marginTop: "1px",
             display: "block",
             color: "rgb(51, 51, 51)",
-        }); 
-
+        });
     }
 }
-
