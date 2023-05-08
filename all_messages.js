@@ -1,12 +1,6 @@
-{
+window.all_messages_component = (function () {
     const { build_top_left_panel_icon } = window.icon_helpers;
     const { style_a, setStyles } = window.style_helpers;
-
-    const demo = document.querySelector("#demo");
-
-    const all_messages = build_all_messages(demo);
-    wire_up_handlers(all_messages);
-    style(all_messages);
 
     function build_all_messages(demo) {
         function build_li() {
@@ -75,4 +69,12 @@
             color: "rgb(51, 51, 51)",
         });
     }
-}
+
+    function fully_build() {
+        const all_messages = build_all_messages(demo);
+        wire_up_handlers(all_messages);
+        style(all_messages);
+    }
+
+    return { fully_build };
+})();
