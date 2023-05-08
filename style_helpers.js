@@ -25,8 +25,18 @@ window.style_helpers = (function () {
         });
     }
 
+    function style_main_link(a) {
+        style_a(a);
+
+        setStyles(a, {
+            marginTop: "1px",
+            display: "block",
+            color: "rgb(51, 51, 51)",
+        });
+    }
+
     return {
         setStyles,
-        style_a,
+        style_main_link,
     };
 })();

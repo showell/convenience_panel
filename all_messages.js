@@ -1,6 +1,6 @@
 window.all_messages_component = (function () {
     const { build_top_left_panel_icon } = window.icon_helpers;
-    const { style_a, setStyles } = window.style_helpers;
+    const { style_main_link, setStyles } = window.style_helpers;
 
     function build_all_messages() {
         function build_main_link(li) {
@@ -50,13 +50,7 @@ window.all_messages_component = (function () {
             paddingBottom: "1px",
         });
 
-        style_a(all_messages.main_link);
-
-        setStyles(all_messages.main_link, {
-            marginTop: "1px",
-            display: "block",
-            color: "rgb(51, 51, 51)",
-        });
+        style_main_link(all_messages.main_link);
     }
 
     function fully_build({services}) {
