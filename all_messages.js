@@ -35,9 +35,10 @@ window.all_messages_component = (function () {
         };
     }
 
-    function wire_up_handlers(all_messages) {
+    function wire_up_handlers({all_messages, services}) {
+        const {launch_all_messages} = services;
         all_messages.main_link.addEventListener("click", () => {
-            console.log("click to all_messages view");
+            launch_all_messages();
         });
     }
 
@@ -58,9 +59,9 @@ window.all_messages_component = (function () {
         });
     }
 
-    function fully_build() {
+    function fully_build({services}) {
         const all_messages = build_all_messages();
-        wire_up_handlers(all_messages);
+        wire_up_handlers({all_messages, services});
         style(all_messages);
 
         return all_messages;
