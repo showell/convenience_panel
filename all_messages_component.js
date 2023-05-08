@@ -19,7 +19,6 @@ zulip.all_messages_component = (function () {
                 icon_name: "fa-align-left",
             });
 
-
             elem.append(icon);
             elem.append(build_span());
 
