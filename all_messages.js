@@ -2,7 +2,7 @@ window.all_messages_component = (function () {
     const { build_top_left_panel_icon } = window.icon_helpers;
     const { style_a, setStyles } = window.style_helpers;
 
-    function build_all_messages(demo) {
+    function build_all_messages() {
         function build_main_link(li) {
             const elem = document.createElement("a");
             elem.href = "#all_messages";
@@ -28,8 +28,6 @@ window.all_messages_component = (function () {
 
         const li = document.createElement("li");
         const main_link = build_main_link(li);
-
-        demo.append(li);
 
         return {
             li,
@@ -61,9 +59,11 @@ window.all_messages_component = (function () {
     }
 
     function fully_build() {
-        const all_messages = build_all_messages(demo);
+        const all_messages = build_all_messages();
         wire_up_handlers(all_messages);
         style(all_messages);
+
+        return all_messages;
     }
 
     return { fully_build };
