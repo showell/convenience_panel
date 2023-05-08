@@ -7,6 +7,14 @@
     width: 100%;
 }
 
+.style-panel-decorative-icon {
+    display: inline-block;
+    min-width: 19px;
+    text-align: center;
+    padding-right: 3px;
+    opacity: .7;
+}
+
 .style-panel-main-link {
     margin-top: 1px;
     width: 85%;

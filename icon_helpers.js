@@ -10,18 +10,9 @@ zulip.icon_helpers = (function () {
         icon.classList.add(icon_name);
         icon.setAttribute("aria-hidden", "true");
 
+        icon.classList.add("style-panel-decorative-icon");
+
         span.append(icon);
-
-        setStyles(span, {
-            display: "inline-block",
-            minWidth: "19px",
-            textAlign: "center",
-        });
-
-        setStyles(icon, {
-            paddingRight: "3px",
-            opacity: ".7",
-        });
 
         return span;
     }
