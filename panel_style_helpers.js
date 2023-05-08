@@ -1,9 +1,7 @@
 zulip.panel_style_helpers = (function () {
-    const { setStyles, style_a } = zulip.style_helpers;
+    const { setStyles } = zulip.style_helpers;
 
     function style_main_link(a) {
-        style_a(a);
-
         setStyles(a, {
             marginTop: "1px",
             width: "85%",

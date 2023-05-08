@@ -18,15 +18,7 @@ zulip.style_helpers = (function () {
         return elem;
     }
 
-    function style_a(a) {
-        setStyles(a, {
-            cursor: "pointer",
-            textDecoration: "none",
-        });
-    }
-
     return {
         setStyles,
-        style_a,
     };
 })();
