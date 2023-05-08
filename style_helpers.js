@@ -1,4 +1,4 @@
-window.style_helpers = (function () {
+zulip.style_helpers = (function () {
     function setStyles(elem, styles) {
         const info = [];
         const label = elem.id
