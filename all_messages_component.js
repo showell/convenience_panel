@@ -1,32 +1,17 @@
 zulip.all_messages_component = (function () {
-    const { build_top_left_panel_icon, build_vdot_icon } = zulip.icon_helpers;
+    const { build_vdot_icon } = zulip.icon_helpers;
     const { colorize_main_link, style_list_item, style_main_link } =
         zulip.panel_style_helpers;
+    const { build_main_link } = zulip.panel_helpers;
 
-    function build_all_messages() {
-        function build_main_link(li) {
-            const elem = document.createElement("a");
-            elem.href = "#all_messages";
-
-            function build_span() {
-                const span = document.createElement("span");
-                span.innerText = "All messages";
-
-                return span;
-            }
-
-            const icon = build_top_left_panel_icon({
-                icon_name: "fa-align-left",
-            });
-
-            elem.append(icon);
-            elem.append(build_span());
-
-            return elem;
-        }
-
+    function build() {
         const li = document.createElement("li");
-        const main_link = build_main_link(li);
+        const main_link = build_main_link({
+            href: "#all_messages",
+            text: "All messages",
+            icon_name: "fa-align-left",
+        });
+
         const vdot_icon = build_vdot_icon();
         li.append(main_link);
         li.append(vdot_icon);
@@ -54,7 +39,7 @@ zulip.all_messages_component = (function () {
     }
 
     function fully_build({ services }) {
-        const all_messages = build_all_messages();
+        const all_messages = build();
         wire_up_handlers({ all_messages, services });
         style(all_messages);
         colorize(all_messages);
