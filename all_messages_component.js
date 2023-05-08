@@ -26,13 +26,17 @@ zulip.all_messages_component = (function () {
             main_link,
             right,
             unread_count,
+            vdot_icon,
         };
     }
 
     function wire_up_handlers({ all_messages, services }) {
-        const { launch_all_messages } = services;
+        const { all_messages_menu, launch_all_messages } = services;
         all_messages.main_link.elem.addEventListener("click", () => {
             launch_all_messages();
+        });
+        all_messages.vdot_icon.addEventListener("click", () => {
+            all_messages_menu();
         });
     }
 
