@@ -45,19 +45,7 @@ zulip.icon_helpers = (function () {
         `;
 
         span.innerHTML = svg;
-
-        setStyles(span, {
-            display: "inline-block",
-            paddingLeft: ".25em",
-            paddingRight: ".25em",
-            cursor: "pointer",
-            textDecoration: "none",
-        });
-
-        setStyles(span.querySelector("svg"), {
-            height: "12px",
-            width: "15px",
-        });
+        span.classList.add("style-panel-popup-menu-icon");
 
         return span;
     }
