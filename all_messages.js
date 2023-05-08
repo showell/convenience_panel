@@ -1,10 +1,7 @@
 zulip.all_messages_component = (function () {
     const { build_top_left_panel_icon } = zulip.icon_helpers;
-    const {
-        colorize_main_link,
-        style_list_item,
-        style_main_link,
-    } = zulip.style_helpers;
+    const { colorize_main_link, style_list_item, style_main_link } =
+        zulip.style_helpers;
 
     function build_all_messages() {
         function build_main_link(li) {
