@@ -1,6 +1,4 @@
 zulip.icon_helpers = (function () {
-    const { setStyles } = zulip.style_helpers;
-
     function build_top_left_panel_icon({ icon_name }) {
         const span = document.createElement("span");
 
