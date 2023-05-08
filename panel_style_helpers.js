@@ -7,6 +7,7 @@ zulip.panel_style_helpers = (function () {
         setStyles(a, {
             marginTop: "1px",
             display: "inline-block",
+            width: "85%",
         });
     }
 
@@ -18,10 +19,12 @@ zulip.panel_style_helpers = (function () {
 
     function style_list_item(li) {
         setStyles(li, {
-            paddingLeft: "10px",
-            paddingRight: "10px",
+            paddingLeft: "5px",
             paddingTop: "1px",
             paddingBottom: "1px",
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
         });
     }
 

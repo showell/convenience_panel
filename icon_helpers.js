@@ -48,9 +48,10 @@ zulip.icon_helpers = (function () {
 
         setStyles(span, {
             display: "inline-block",
-            verticalAlign: "middle",
             paddingLeft: ".25em",
             paddingRight: ".25em",
+            cursor: "pointer",
+            textDecoration: "none",
         });
 
         setStyles(span.querySelector("svg"), {
