@@ -1,7 +1,7 @@
 zulip.all_messages_component = (function () {
     const { build_unread_count } = zulip.unread_count_helpers;
     const { build_vdot_icon } = zulip.icon_helpers;
-    const { colorize_main_link, style_list_item, style_main_link, style_right } =
+    const { colorize_main_link, style_main_link, style_right } =
         zulip.panel_style_helpers;
     const { build_main_link } = zulip.panel_helpers;
 
@@ -41,7 +41,7 @@ zulip.all_messages_component = (function () {
     }
 
     function style(all_messages) {
-        style_list_item(all_messages.li);
+        all_messages.li.classList.add("style-panel-list-item");
         style_main_link(all_messages.main_link.elem);
         style_right(all_messages.right);
     }
