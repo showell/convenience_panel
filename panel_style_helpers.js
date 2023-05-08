@@ -9,7 +9,7 @@ zulip.panel_style_helpers = (function () {
 
         setStyles(a, {
             marginTop: "1px",
-            display: "block",
+            display: "inline-block",
         });
     }
 

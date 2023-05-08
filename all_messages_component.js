@@ -1,5 +1,5 @@
 zulip.all_messages_component = (function () {
-    const { build_top_left_panel_icon } = zulip.icon_helpers;
+    const { build_top_left_panel_icon, build_vdot_icon } = zulip.icon_helpers;
     const { colorize_main_link, style_list_item, style_main_link } =
         zulip.panel_style_helpers;
 
@@ -19,16 +19,18 @@ zulip.all_messages_component = (function () {
                 icon_name: "fa-align-left",
             });
 
+
             elem.append(icon);
             elem.append(build_span());
-
-            li.append(elem);
 
             return elem;
         }
 
         const li = document.createElement("li");
         const main_link = build_main_link(li);
+        const vdot_icon = build_vdot_icon();
+        li.append(main_link);
+        li.append(vdot_icon);
 
         return {
             li,
