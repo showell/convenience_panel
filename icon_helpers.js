@@ -11,7 +11,6 @@ window.icon_helpers = (function () {
         icon.setAttribute("aria-hidden", "true");
 
         span.append(icon);
-        const elem = span;
 
         setStyles(span, {
             display: "inline-block",
@@ -24,9 +23,7 @@ window.icon_helpers = (function () {
             opacity: ".7",
         });
 
-        return {
-            elem,
-        };
+        return span;
     }
 
     return {
