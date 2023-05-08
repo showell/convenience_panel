@@ -15,7 +15,6 @@ zulip.all_messages_component = (function () {
         const vdot_icon = build_vdot_icon();
         const unread_count = build_unread_count();
 
-
         li.append(main_link.elem);
         li.append(unread_count);
         li.append(vdot_icon);

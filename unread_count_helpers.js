@@ -4,8 +4,7 @@ zulip.unread_count_helpers = (function () {
     function build_unread_count() {
         const elem = document.createElement("span");
 
-        setStyles(elem, {
-        });
+        setStyles(elem, {});
 
         return elem;
     }
