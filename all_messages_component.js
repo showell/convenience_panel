@@ -8,12 +8,11 @@ zulip.all_messages_component = (function () {
         const li = document.createElement("li");
         const main_link = build_main_link({
             href: "#all_messages",
-            text: "All messages",
             icon_name: "fa-align-left",
         });
 
         const vdot_icon = build_vdot_icon();
-        li.append(main_link);
+        li.append(main_link.elem);
         li.append(vdot_icon);
 
         return {
@@ -24,18 +23,22 @@ zulip.all_messages_component = (function () {
 
     function wire_up_handlers({ all_messages, services }) {
         const { launch_all_messages } = services;
-        all_messages.main_link.addEventListener("click", () => {
+        all_messages.main_link.elem.addEventListener("click", () => {
             launch_all_messages();
         });
     }
 
     function style(all_messages) {
         style_list_item(all_messages.li);
-        style_main_link(all_messages.main_link);
+        style_main_link(all_messages.main_link.elem);
     }
 
     function colorize(all_messages) {
-        colorize_main_link(all_messages.main_link);
+        colorize_main_link(all_messages.main_link.elem);
+    }
+
+    function populate_text(all_messages) {
+        all_messages.main_link.span.innerText = "All messages";
     }
 
     function fully_build({ services }) {
@@ -43,6 +46,7 @@ zulip.all_messages_component = (function () {
         wire_up_handlers({ all_messages, services });
         style(all_messages);
         colorize(all_messages);
+        populate_text(all_messages);
 
         return all_messages;
     }
