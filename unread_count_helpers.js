@@ -4,7 +4,13 @@ zulip.unread_count_helpers = (function () {
     function build_unread_count() {
         const elem = document.createElement("span");
 
-        setStyles(elem, {});
+        setStyles(elem, {
+            border: ".5px solid #7e827c",
+            borderRadius: "4px",
+            paddingRight: "4px",
+            paddingLeft: "4px",
+            fontSize: "12px",
+        });
 
         return elem;
     }

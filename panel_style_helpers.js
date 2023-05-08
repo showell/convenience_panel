@@ -6,7 +6,6 @@ zulip.panel_style_helpers = (function () {
 
         setStyles(a, {
             marginTop: "1px",
-            display: "inline-block",
             width: "85%",
         });
     }
@@ -14,6 +13,13 @@ zulip.panel_style_helpers = (function () {
     function colorize_main_link(a) {
         setStyles(a, {
             color: "rgb(51, 51, 51)",
+        });
+    }
+
+    function style_right(a) {
+        setStyles(a, {
+            display: "flex",
+            flexDirection: "row",
         });
     }
 
@@ -32,5 +38,6 @@ zulip.panel_style_helpers = (function () {
         colorize_main_link,
         style_main_link,
         style_list_item,
+        style_right,
     };
 })();

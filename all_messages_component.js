@@ -1,7 +1,7 @@
 zulip.all_messages_component = (function () {
     const { build_unread_count } = zulip.unread_count_helpers;
     const { build_vdot_icon } = zulip.icon_helpers;
-    const { colorize_main_link, style_list_item, style_main_link } =
+    const { colorize_main_link, style_list_item, style_main_link, style_right } =
         zulip.panel_style_helpers;
     const { build_main_link } = zulip.panel_helpers;
 
@@ -14,14 +14,17 @@ zulip.all_messages_component = (function () {
 
         const vdot_icon = build_vdot_icon();
         const unread_count = build_unread_count();
+        const right = document.createElement("span");
 
         li.append(main_link.elem);
-        li.append(unread_count);
-        li.append(vdot_icon);
+        right.append(unread_count);
+        right.append(vdot_icon);
+        li.append(right);
 
         return {
             li,
             main_link,
+            right,
             unread_count,
         };
     }
@@ -36,6 +39,7 @@ zulip.all_messages_component = (function () {
     function style(all_messages) {
         style_list_item(all_messages.li);
         style_main_link(all_messages.main_link.elem);
+        style_right(all_messages.right);
     }
 
     function colorize(all_messages) {
