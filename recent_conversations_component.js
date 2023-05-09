@@ -1,6 +1,5 @@
 zulip.recent_conversations_component = (function () {
-    const { build_list_item, build_main_link } =
-        zulip.panel_helpers;
+    const { build_list_item, build_main_link } = zulip.panel_helpers;
 
     function build() {
         const li = build_list_item();

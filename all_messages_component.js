@@ -29,7 +29,7 @@ zulip.all_messages_component = (function () {
     }
 
     function fully_build({ services }) {
-        function repopulate_text(){
+        function repopulate_text() {
             all_messages.main_link.span.innerText = translate("All messages");
             all_messages.unread_count.innerText = "2";
         }
@@ -43,7 +43,6 @@ zulip.all_messages_component = (function () {
             });
         }
 
-
         const all_messages = build();
         const { launch_all_messages, all_messages_menu, translate } = services;
 
@@ -53,7 +52,7 @@ zulip.all_messages_component = (function () {
         return {
             li: all_messages.li,
             repopulate_text,
-        }
+        };
     }
 
     return { fully_build };
