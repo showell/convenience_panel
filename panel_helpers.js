@@ -1,6 +1,13 @@
 zulip.panel_helpers = (function () {
     const { build_top_left_panel_icon } = zulip.icon_helpers;
 
+    function build_list_item() {
+        const li = document.createElement("li");
+        li.classList.add("style-panel-list-item");
+
+        return li;
+    }
+
     function build_main_link({ href, icon_name }) {
         const elem = document.createElement("a");
         elem.href = href;
@@ -16,6 +23,7 @@ zulip.panel_helpers = (function () {
     }
 
     return {
+        build_list_item,
         build_main_link,
     };
 })();

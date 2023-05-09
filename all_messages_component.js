@@ -1,10 +1,11 @@
 zulip.all_messages_component = (function () {
     const { build_unread_count } = zulip.unread_count_helpers;
     const { build_vdot_icon } = zulip.icon_helpers;
-    const { build_main_link } = zulip.panel_helpers;
+    const { build_list_item, build_main_link } = zulip.panel_helpers;
 
     function build() {
-        const li = document.createElement("li");
+        const li = build_list_item();
+
         const main_link = build_main_link({
             href: "#all_messages",
             icon_name: "fa-align-left",
@@ -38,7 +39,6 @@ zulip.all_messages_component = (function () {
     }
 
     function style(all_messages) {
-        all_messages.li.classList.add("style-panel-list-item");
         all_messages.right.classList.add("style-panel-list-item-right");
     }
 
