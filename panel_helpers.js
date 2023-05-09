@@ -22,8 +22,16 @@ zulip.panel_helpers = (function () {
         return { elem, span };
     }
 
+    function build_right_align_div() {
+        const span = document.createElement("span");
+        span.classList.add("style-panel-list-item-right");
+
+        return span;
+    }
+
     return {
         build_list_item,
         build_main_link,
+        build_right_align_div,
     };
 })();
