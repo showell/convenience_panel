@@ -39,7 +39,6 @@ zulip.all_messages_component = (function () {
 
     function style(all_messages) {
         all_messages.li.classList.add("style-panel-list-item");
-        all_messages.main_link.elem.classList.add("style-panel-main-link");
         all_messages.right.classList.add("style-panel-list-item-right");
     }
 

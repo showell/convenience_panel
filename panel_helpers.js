@@ -8,6 +8,8 @@ zulip.panel_helpers = (function () {
         const icon = build_top_left_panel_icon({ icon_name });
         const span = document.createElement("span");
 
+        elem.classList.add("style-panel-main-link");
+
         elem.append(icon, span);
 
         return { elem, span };
