@@ -15,8 +15,7 @@ zulip.all_messages_component = (function () {
         const right = document.createElement("span");
 
         li.append(main_link.elem);
-        right.append(unread_count);
-        right.append(vdot_icon);
+        right.append(unread_count, vdot_icon);
         li.append(right);
 
         return {
