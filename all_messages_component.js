@@ -1,7 +1,8 @@
 zulip.all_messages_component = (function () {
     const { build_unread_count } = zulip.unread_count_helpers;
     const { build_vdot_icon } = zulip.icon_helpers;
-    const { build_list_item, build_main_link, build_right_align_div } = zulip.panel_helpers;
+    const { build_list_item, build_main_link, build_right_align_div } =
+        zulip.panel_helpers;
 
     function build() {
         const li = build_list_item();
