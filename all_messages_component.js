@@ -28,27 +28,32 @@ zulip.all_messages_component = (function () {
         };
     }
 
-    function wire_up_handlers({ all_messages, services }) {
-        const { all_messages_menu, launch_all_messages } = services;
-        all_messages.main_link.elem.addEventListener("click", () => {
-            launch_all_messages();
-        });
-        all_messages.vdot_icon.addEventListener("click", () => {
-            all_messages_menu();
-        });
-    }
-
-    function populate_text(all_messages) {
-        all_messages.main_link.span.innerText = "All messages";
-        all_messages.unread_count.innerText = "2";
-    }
-
     function fully_build({ services }) {
-        const all_messages = build();
-        wire_up_handlers({ all_messages, services });
-        populate_text(all_messages);
+        function repopulate_text(){
+            all_messages.main_link.span.innerText = translate("All messages");
+            all_messages.unread_count.innerText = "2";
+        }
 
-        return all_messages;
+        function wire_up_handlers() {
+            all_messages.main_link.elem.addEventListener("click", () => {
+                launch_all_messages();
+            });
+            all_messages.vdot_icon.addEventListener("click", () => {
+                all_messages_menu();
+            });
+        }
+
+
+        const all_messages = build();
+        const { launch_all_messages, all_messages_menu, translate } = services;
+
+        wire_up_handlers();
+        repopulate_text();
+
+        return {
+            li: all_messages.li,
+            repopulate_text,
+        }
     }
 
     return { fully_build };

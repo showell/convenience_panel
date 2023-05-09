@@ -18,22 +18,23 @@ zulip.recent_conversations_component = (function () {
         };
     }
 
-    function wire_up_handlers({ recent, services }) {
+    function wire_up_handlers({ recent, launch_recent_conversations }) {
         // TODO: fix what we launch
-        const { launch_recent_conversations } = services;
         recent.main_link.elem.addEventListener("click", () => {
             launch_recent_conversations();
         });
     }
 
-    function populate_text(all_messages) {
-        all_messages.main_link.span.innerText = "Recent conversations";
+    function populate_text({ recent, translate } ) {
+        recent.main_link.span.innerText = translate("Recent conversations");
     }
 
     function fully_build({ services }) {
         const recent = build();
-        wire_up_handlers({ recent, services });
-        populate_text(recent);
+        const { translate, launch_recent_conversations } = services;
+
+        wire_up_handlers({ recent, launch_recent_conversations });
+        populate_text({ recent, translate });
 
         return recent;
     }
