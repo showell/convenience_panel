@@ -22,7 +22,6 @@ zulip.all_messages_component = (function () {
         return {
             li,
             main_link,
-            right,
             unread_count,
             vdot_icon,
         };
