@@ -13,7 +13,8 @@ zulip.convenience_panel = (function () {
         div.append(recent_conversations.li);
 
         function repopulate_text({ translate }) {
-            all_messages.repopulate_text({ translate });
+            all_messages.repopulate_text();
+            recent_conversations.repopulate_text();
         }
 
         return {

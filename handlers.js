@@ -17,7 +17,7 @@ zulip.handlers = (function () {
                 if (s === "All messages") {
                     return "Tous les messages";
                 } else if (s == "Recent conversations") {
-                    return "Conversations recentes";
+                    return "Conversations récentes";
                 }
             }
 

@@ -18,25 +18,28 @@ zulip.recent_conversations_component = (function () {
         };
     }
 
-    function wire_up_handlers({ recent, launch_recent_conversations }) {
-        // TODO: fix what we launch
-        recent.main_link.elem.addEventListener("click", () => {
-            launch_recent_conversations();
-        });
-    }
-
-    function populate_text({ recent, translate } ) {
-        recent.main_link.span.innerText = translate("Recent conversations");
-    }
-
     function fully_build({ services }) {
+        function repopulate_text() {
+            recent.main_link.span.innerText = translate("Recent conversations");
+        }
+
+        function wire_up_handlers() {
+            // TODO: fix what we launch
+            recent.main_link.elem.addEventListener("click", () => {
+                launch_recent_conversations();
+            });
+        }
+
         const recent = build();
         const { translate, launch_recent_conversations } = services;
 
-        wire_up_handlers({ recent, launch_recent_conversations });
-        populate_text({ recent, translate });
+        wire_up_handlers();
+        repopulate_text();
 
-        return recent;
+        return {
+            li: recent.li,
+            repopulate_text,
+        };
     }
 
     return { fully_build };
