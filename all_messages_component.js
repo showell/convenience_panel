@@ -1,6 +1,6 @@
 import { build_vdot_icon } from "./icon_helpers.js";
 import { build_unread_count } from "./unread_count_helpers.js";
-import { build_list_item, build_main_link, build_right_align_div } from "./panel_helpers.js";
+import { build_list_item, build_main_link, build_right_align_span } from "./panel_helpers.js";
 
 function build() {
     const li = build_list_item();
@@ -12,7 +12,7 @@ function build() {
 
     const vdot_icon = build_vdot_icon();
     const unread_count = build_unread_count();
-    const right = build_right_align_div();
+    const right = build_right_align_span();
 
     li.append(main_link.elem);
     right.append(unread_count, vdot_icon);

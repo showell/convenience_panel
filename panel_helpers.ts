@@ -31,7 +31,7 @@ export function build_main_link({ href, icon_name }: LinkArgs): MainLink {
     return { elem, span };
 }
 
-export function build_right_align_div() {
+export function build_right_align_span(): HTMLSpanElement {
     const span = document.createElement("span");
     span.classList.add("style-panel-list-item-right");
 
