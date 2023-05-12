@@ -2,8 +2,8 @@ import { build_list_item, build_main_link } from "./panel_helpers.js";
 function build() {
     const li = build_list_item();
     const main_link = build_main_link({
-        href: "#recent",
-        icon_name: "fa-clock",
+        href: "#narrow/is/mentioned",
+        icon_name: "fa-at",
     });
     li.append(main_link.elem);
     return {
@@ -11,14 +11,14 @@ function build() {
         main_link,
     };
 }
-export function fully_build({ launch_recent_conversations, translate, }) {
+export function fully_build({ launch_mentions, translate, }) {
     function repopulate_text() {
-        recent.main_link.span.innerText = translate("Recent conversations");
+        recent.main_link.span.innerText = translate("Mentions");
     }
     function wire_up_handlers() {
         // TODO: fix what we launch
         recent.main_link.elem.addEventListener("click", () => {
-            launch_recent_conversations();
+            launch_mentions();
         });
     }
     const recent = build();
@@ -29,3 +29,4 @@ export function fully_build({ launch_recent_conversations, translate, }) {
         repopulate_text,
     };
 }
+//# sourceMappingURL=mentions_component.js.map

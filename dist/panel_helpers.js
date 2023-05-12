@@ -18,3 +18,4 @@ export function build_right_align_span() {
     span.classList.add("style-panel-list-item-right");
     return span;
 }
+//# sourceMappingURL=panel_helpers.js.map

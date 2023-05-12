@@ -41,3 +41,4 @@ export function fully_build({ launch_all_messages, all_messages_menu, translate,
         repopulate_text,
     };
 }
+//# sourceMappingURL=all_messages_component.js.map

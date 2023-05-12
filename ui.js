@@ -1,4 +1,4 @@
-import { fully_build } from "./convenience_panel.js";
+import { fully_build } from "./dist/convenience_panel.js";
 import { build_handlers } from "./handlers.js";
 
 {

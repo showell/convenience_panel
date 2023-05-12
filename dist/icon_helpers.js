@@ -30,3 +30,4 @@ export function build_vdot_icon() {
     span.classList.add("style-panel-popup-menu-icon");
     return span;
 }
+//# sourceMappingURL=icon_helpers.js.map

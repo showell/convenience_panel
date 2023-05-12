@@ -1,0 +1,1 @@
+{"version":3,"file":"unread_count_helpers.js","sourceRoot":"","sources":["../lib/unread_count_helpers.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,kBAAkB;IAC9B,MAAM,IAAI,GAAG,QAAQ,CAAC,aAAa,CAAC,MAAM,CAAC,CAAC;IAC5C,IAAI,CAAC,SAAS,CAAC,GAAG,CAAC,4BAA4B,CAAC,CAAC;IACjD,OAAO,IAAI,CAAC;AAChB,CAAC"}

@@ -30,3 +30,4 @@ export function fully_build({ services }) {
         repopulate_text,
     };
 }
+//# sourceMappingURL=convenience_panel.js.map
