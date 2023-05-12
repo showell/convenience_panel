@@ -7,6 +7,7 @@ export function fully_build({ services }) {
 
     const {
         launch_all_messages,
+        launch_mentions,
         launch_recent_conversations,
         all_messages_menu,
         translate,
@@ -25,7 +26,10 @@ export function fully_build({ services }) {
     });
     div.append(recent_conversations.li);
 
-    const mentions = mentions_component.fully_build({ services });
+    const mentions = mentions_component.fully_build({
+        launch_mentions,
+        translate,
+    });
     div.append(mentions.li);
 
     function repopulate_text({ translate }) {
