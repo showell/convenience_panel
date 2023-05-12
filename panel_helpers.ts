@@ -1,12 +1,5 @@
 import { build_top_left_panel_icon } from "./icon_helpers.js";
  
-export function build_list_item() {
-    const li = document.createElement("li");
-    li.classList.add("style-panel-list-item");
-
-    return li;
-}
-
 interface LinkArgs {
     href: string,
     icon_name: string,
@@ -15,6 +8,13 @@ interface LinkArgs {
 type MainLink = {
     elem: HTMLAnchorElement,
     span: HTMLSpanElement,
+}
+
+export function build_list_item() {
+    const li = document.createElement("li");
+    li.classList.add("style-panel-list-item");
+
+    return li;
 }
 
 export function build_main_link({ href, icon_name }: LinkArgs): MainLink {

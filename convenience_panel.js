@@ -5,8 +5,16 @@ import * as mentions_component from "./mentions_component.js";
 export function fully_build({ services }) {
     const div = document.createElement("div");
 
+    const {
+        launch_all_messages,
+        all_messages_menu,
+        translate,
+    } = services;
+
     const all_messages = all_messages_component.fully_build({
-        services,
+        launch_all_messages,
+        all_messages_menu,
+        translate,
     });
     div.append(all_messages.li);
 
