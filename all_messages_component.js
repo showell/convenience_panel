@@ -1,10 +1,6 @@
 import { build_vdot_icon } from "./icon_helpers.js";
 import { build_unread_count } from "./unread_count_helpers.js";
-import {
-    build_list_item,
-    build_main_link,
-    build_right_align_span,
-} from "./panel_helpers.js";
+import { build_list_item, build_main_link, build_right_align_span, } from "./panel_helpers.js";
 function build() {
     const li = build_list_item();
     const main_link = build_main_link({
@@ -24,11 +20,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({
-    launch_all_messages,
-    all_messages_menu,
-    translate,
-}) {
+export function fully_build({ launch_all_messages, all_messages_menu, translate, }) {
     function repopulate_text() {
         all_messages.main_link.span.innerText = translate("All messages");
         all_messages.unread_count.innerText = "2";
