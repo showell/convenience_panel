@@ -1,8 +1,8 @@
-interface IconDesc {
+interface IconArgs {
     icon_name: string;
 }
 
-export function build_top_left_panel_icon({ icon_name }: IconDesc) {
+export function build_top_left_panel_icon({ icon_name }: IconArgs) {
     const span = document.createElement("span");
 
     const icon = document.createElement("i");

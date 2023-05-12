@@ -14,7 +14,12 @@ interface BuildArgs {
     services: Handlers,
 }
 
-export function fully_build({ services }: BuildArgs) {
+type ConveneniencePanel = {
+    elem: HTMLDivElement,
+    repopulate_text: () => void,
+}
+
+export function fully_build({ services }: BuildArgs): ConveneniencePanel {
     const div = document.createElement("div");
 
     const {
