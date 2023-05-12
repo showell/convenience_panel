@@ -12,6 +12,12 @@ interface BuildArgs {
     readonly translate: (s: string) => string;
 }
 
+type AllMessagesWidget = {
+    readonly li: HTMLElement,
+    readonly repopulate_text: () => void,
+    readonly update_unread_count: (count: number) => void,
+}
+
 function build() {
     const li = build_list_item();
 
@@ -40,7 +46,7 @@ export function fully_build({
     launch_all_messages,
     all_messages_menu,
     translate,
-}: BuildArgs) {
+}: BuildArgs): AllMessagesWidget {
     function repopulate_text() {
         all_messages.main_link.span.innerText = translate("All messages");
     }
@@ -59,10 +65,13 @@ export function fully_build({
     wire_up_handlers();
     repopulate_text();
 
-    all_messages.unread_count.update_count(4);
+    function update_unread_count(count: number): void {
+        all_messages.unread_count.update_count(count);
+    }
 
     return {
         li: all_messages.li,
         repopulate_text,
+        update_unread_count,
     };
 }

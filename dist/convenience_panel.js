@@ -10,6 +10,7 @@ export function fully_build({ services }) {
         translate,
     });
     div.append(all_messages.li);
+    all_messages.update_unread_count(17);
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
         translate,

@@ -35,10 +35,13 @@ export function fully_build({ launch_all_messages, all_messages_menu, translate,
     const all_messages = build();
     wire_up_handlers();
     repopulate_text();
-    all_messages.unread_count.update_count(4);
+    function update_unread_count(count) {
+        all_messages.unread_count.update_count(count);
+    }
     return {
         li: all_messages.li,
         repopulate_text,
+        update_unread_count,
     };
 }
 //# sourceMappingURL=all_messages_component.js.map
