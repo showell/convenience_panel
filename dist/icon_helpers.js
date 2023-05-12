@@ -1,7 +1,6 @@
 export function build_top_left_panel_icon({ icon_name }) {
     const span = document.createElement("span");
     const icon = document.createElement("i");
-    console.log("foo");
     icon.classList.add("fa");
     icon.classList.add(icon_name);
     icon.setAttribute("aria-hidden", "true");

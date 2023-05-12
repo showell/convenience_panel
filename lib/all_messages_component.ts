@@ -25,7 +25,7 @@ function build() {
     const right = build_right_align_span();
 
     li.append(main_link.elem);
-    right.append(unread_count, vdot_icon);
+    right.append(unread_count.elem, vdot_icon);
     li.append(right);
 
     return {
@@ -43,7 +43,6 @@ export function fully_build({
 }: BuildArgs) {
     function repopulate_text() {
         all_messages.main_link.span.innerText = translate("All messages");
-        all_messages.unread_count.innerText = "2";
     }
 
     function wire_up_handlers() {
@@ -59,6 +58,8 @@ export function fully_build({
 
     wire_up_handlers();
     repopulate_text();
+
+    all_messages.unread_count.update_count(4);
 
     return {
         li: all_messages.li,
