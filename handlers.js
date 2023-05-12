@@ -8,6 +8,10 @@ zulip.handlers = (function () {
             console.log("Launch Recent Conversations");
         }
 
+        function launch_mentions() {
+            console.log("Launch Mentions view");
+        }
+
         function all_messages_menu() {
             console.log("pop up All Messages vdot menu");
         }
@@ -27,6 +31,7 @@ zulip.handlers = (function () {
         return {
             launch_all_messages,
             launch_recent_conversations,
+            launch_mentions,
             all_messages_menu,
             translate,
         };
