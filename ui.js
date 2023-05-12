@@ -2,7 +2,6 @@ import { fully_build } from "./convenience_panel.js";
 import { build_handlers } from "./handlers.js";
 
 {
-
     zulip.lang = "en";
 
     const demo = document.querySelector("#demo");

@@ -1,14 +1,14 @@
 import { build_top_left_panel_icon } from "./icon_helpers.js";
- 
+
 interface LinkArgs {
-    href: string,
-    icon_name: string,
+    href: string;
+    icon_name: string;
 }
 
 type MainLink = {
-    elem: HTMLAnchorElement,
-    span: HTMLSpanElement,
-}
+    elem: HTMLAnchorElement;
+    span: HTMLSpanElement;
+};
 
 export function build_list_item() {
     const li = document.createElement("li");

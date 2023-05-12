@@ -1,8 +1,9 @@
 interface IconDesc {
-    icon_name: string,
+    icon_name: string;
 }
 
-export function build_top_left_panel_icon({ icon_name }: IconDesc) { const span = document.createElement("span");
+export function build_top_left_panel_icon({ icon_name }: IconDesc) {
+    const span = document.createElement("span");
 
     const icon = document.createElement("i");
     console.log("foo");
