@@ -7,9 +7,9 @@ import {
 } from "./panel_helpers.js";
 
 interface BuildArgs {
-    readonly launch_all_messages: any;
-    readonly all_messages_menu: any;
-    readonly translate: any;
+    readonly launch_all_messages: () => void;
+    readonly all_messages_menu: () => void;
+    readonly translate: (s: string) => string;
 }
 
 function build() {
