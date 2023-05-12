@@ -1,59 +1,54 @@
-zulip.all_messages_component = (function () {
-    const { build_unread_count } = zulip.unread_count_helpers;
-    const { build_vdot_icon } = zulip.icon_helpers;
-    const { build_list_item, build_main_link, build_right_align_div } =
-        zulip.panel_helpers;
+import { build_vdot_icon } from "./icon_helpers.js";
+import { build_unread_count } from "./unread_count_helpers.js";
+import { build_list_item, build_main_link, build_right_align_div } from "./panel_helpers.js";
 
-    function build() {
-        const li = build_list_item();
+function build() {
+    const li = build_list_item();
 
-        const main_link = build_main_link({
-            href: "#all_messages",
-            icon_name: "fa-align-left",
+    const main_link = build_main_link({
+        href: "#all_messages",
+        icon_name: "fa-align-left",
+    });
+
+    const vdot_icon = build_vdot_icon();
+    const unread_count = build_unread_count();
+    const right = build_right_align_div();
+
+    li.append(main_link.elem);
+    right.append(unread_count, vdot_icon);
+    li.append(right);
+
+    return {
+        li,
+        main_link,
+        unread_count,
+        vdot_icon,
+    };
+}
+
+export function fully_build({ services }) {
+    function repopulate_text() {
+        all_messages.main_link.span.innerText = translate("All messages");
+        all_messages.unread_count.innerText = "2";
+    }
+
+    function wire_up_handlers() {
+        all_messages.main_link.elem.addEventListener("click", () => {
+            launch_all_messages();
         });
-
-        const vdot_icon = build_vdot_icon();
-        const unread_count = build_unread_count();
-        const right = build_right_align_div();
-
-        li.append(main_link.elem);
-        right.append(unread_count, vdot_icon);
-        li.append(right);
-
-        return {
-            li,
-            main_link,
-            unread_count,
-            vdot_icon,
-        };
+        all_messages.vdot_icon.addEventListener("click", () => {
+            all_messages_menu();
+        });
     }
 
-    function fully_build({ services }) {
-        function repopulate_text() {
-            all_messages.main_link.span.innerText = translate("All messages");
-            all_messages.unread_count.innerText = "2";
-        }
+    const all_messages = build();
+    const { launch_all_messages, all_messages_menu, translate } = services;
 
-        function wire_up_handlers() {
-            all_messages.main_link.elem.addEventListener("click", () => {
-                launch_all_messages();
-            });
-            all_messages.vdot_icon.addEventListener("click", () => {
-                all_messages_menu();
-            });
-        }
+    wire_up_handlers();
+    repopulate_text();
 
-        const all_messages = build();
-        const { launch_all_messages, all_messages_menu, translate } = services;
-
-        wire_up_handlers();
-        repopulate_text();
-
-        return {
-            li: all_messages.li,
-            repopulate_text,
-        };
-    }
-
-    return { fully_build };
-})();
+    return {
+        li: all_messages.li,
+        repopulate_text,
+    };
+}
