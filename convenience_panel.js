@@ -5,7 +5,12 @@ import * as mentions_component from "./mentions_component.js";
 export function fully_build({ services }) {
     const div = document.createElement("div");
 
-    const { launch_all_messages, all_messages_menu, translate } = services;
+    const {
+        launch_all_messages,
+        launch_recent_conversations,
+        all_messages_menu,
+        translate,
+    } = services;
 
     const all_messages = all_messages_component.fully_build({
         launch_all_messages,
@@ -15,7 +20,8 @@ export function fully_build({ services }) {
     div.append(all_messages.li);
 
     const recent_conversations = recent_conversations_component.fully_build({
-        services,
+        launch_recent_conversations,
+        translate,
     });
     div.append(recent_conversations.li);
 
