@@ -44,6 +44,8 @@ export function fully_build({ services }) {
         all_messages,
         drafts,
         mentions,
+        recent_conversations,
+        starred_messages,
     };
     return {
         elem: div,

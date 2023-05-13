@@ -12,7 +12,7 @@ interface StarredBuildArgs {
     readonly translate: (s: string) => string;
 }
 
-type StarredMessagesWidget = {
+export type StarredMessagesWidget = {
     readonly li: HTMLElement,
     readonly repopulate_text: () => void,
     readonly update_unread_count: (count: number) => void,

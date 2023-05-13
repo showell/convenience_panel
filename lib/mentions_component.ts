@@ -29,7 +29,7 @@ function build() {
 export function fully_build({
     launch_mentions,
     translate,
-}: BuildArgs) {
+}: BuildArgs): MentionsWidget {
     function repopulate_text() {
         recent.main_link.span.innerText = translate("Mentions");
     }

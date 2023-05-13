@@ -24,6 +24,8 @@ type PanelWidgets = {
     all_messages: all_messages_component.AllMessagesWidget,
     drafts: drafts_component.DraftsWidget,
     mentions: mentions_component.MentionsWidget,
+    recent_conversations: recent_conversations_component.RecentConversationsWidget,
+    starred_messages: starred_messages_component.StarredMessagesWidget,
 }
 
 type ConveniencePanel = {
@@ -94,6 +96,8 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         all_messages,
         drafts,
         mentions,
+        recent_conversations,
+        starred_messages,
     };
 
     return {

@@ -5,6 +5,11 @@ interface BuildArgs {
     readonly translate: (s: string) => string;
 }
 
+export type RecentConversationsWidget = {
+    readonly li: HTMLElement,
+    readonly repopulate_text: () => void,
+}
+
 function build() {
     const li = build_list_item();
 
