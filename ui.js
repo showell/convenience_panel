@@ -16,5 +16,13 @@ import { build_handlers } from "./handlers.js";
         panel.repopulate_text({ translate: services.translate });
     });
 
+    const unread_button = document.createElement("button");
+    unread_button.innerText = "Set unreads";
+
+    unread_button.addEventListener("click", () => {
+        panel.update_unread_count(20);
+    });
+
     document.body.append(french_button);
+    document.body.append(unread_button);
 }

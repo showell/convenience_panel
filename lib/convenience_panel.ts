@@ -17,6 +17,7 @@ interface BuildArgs {
 type ConveneniencePanel = {
     elem: HTMLDivElement,
     repopulate_text: () => void,
+    update_unread_count: (count: number) => void,
 }
 
 export function fully_build({ services }: BuildArgs): ConveneniencePanel {
@@ -37,8 +38,6 @@ export function fully_build({ services }: BuildArgs): ConveneniencePanel {
     });
     div.append(all_messages.li);
 
-    all_messages.update_unread_count(17);
-
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
         translate,
@@ -57,8 +56,13 @@ export function fully_build({ services }: BuildArgs): ConveneniencePanel {
         mentions.repopulate_text();
     }
 
+    function update_unread_count(count: number): void {
+        all_messages.update_unread_count(count);
+    }
+
     return {
         elem: div,
         repopulate_text,
+        update_unread_count,
     };
 }

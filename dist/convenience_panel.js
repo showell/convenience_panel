@@ -10,7 +10,6 @@ export function fully_build({ services }) {
         translate,
     });
     div.append(all_messages.li);
-    all_messages.update_unread_count(17);
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
         translate,
@@ -26,9 +25,13 @@ export function fully_build({ services }) {
         recent_conversations.repopulate_text();
         mentions.repopulate_text();
     }
+    function update_unread_count(count) {
+        all_messages.update_unread_count(count);
+    }
     return {
         elem: div,
         repopulate_text,
+        update_unread_count,
     };
 }
 //# sourceMappingURL=convenience_panel.js.map
