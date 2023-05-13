@@ -23,7 +23,7 @@ function build() {
 
     const main_link = build_main_link({
         href: "#narrow/is/starred",
-        icon_name: "fa-align-star",
+        icon_name: "fa-pencil",
     });
 
     const vdot_icon = build_vdot_icon();

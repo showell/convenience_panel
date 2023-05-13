@@ -5,7 +5,7 @@ function build() {
     const li = build_list_item();
     const main_link = build_main_link({
         href: "#narrow/is/starred",
-        icon_name: "fa-align-star",
+        icon_name: "fa-star",
     });
     const vdot_icon = build_vdot_icon();
     const unread_count = build_unread_count();
