@@ -11,29 +11,25 @@ export function fully_build({ services }) {
         all_messages_menu,
         translate,
     });
-    div.append(all_messages.li);
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
         translate,
     });
-    div.append(recent_conversations.li);
     const mentions = mentions_component.fully_build({
         launch_mentions,
         translate,
     });
-    div.append(mentions.li);
     const starred_messages = starred_messages_component.fully_build({
         launch_starred_messages,
         starred_messages_menu,
         translate,
     });
-    div.append(starred_messages.li);
     const drafts = drafts_component.fully_build({
         launch_drafts,
         drafts_menu,
         translate,
     });
-    div.append(drafts.li);
+    div.append(all_messages.li, recent_conversations.li, mentions.li, starred_messages.li, drafts.li);
     function repopulate_text() {
         all_messages.repopulate_text();
         recent_conversations.repopulate_text();
@@ -44,10 +40,16 @@ export function fully_build({ services }) {
     function update_unread_count(count) {
         all_messages.update_unread_count(count);
     }
+    const widgets = {
+        all_messages,
+        drafts,
+        mentions,
+    };
     return {
         elem: div,
         repopulate_text,
         update_unread_count,
+        widgets,
     };
 }
 //# sourceMappingURL=convenience_panel.js.map

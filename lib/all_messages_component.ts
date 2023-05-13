@@ -12,7 +12,7 @@ interface BuildArgs {
     readonly translate: (s: string) => string;
 }
 
-type AllMessagesWidget = {
+export type AllMessagesWidget = {
     readonly li: HTMLElement,
     readonly repopulate_text: () => void,
     readonly update_unread_count: (count: number) => void,

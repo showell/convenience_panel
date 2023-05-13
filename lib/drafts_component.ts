@@ -12,7 +12,7 @@ interface DraftsBuildArgs {
     readonly translate: (s: string) => string;
 }
 
-type DraftsWidget = {
+export type DraftsWidget = {
     readonly li: HTMLElement,
     readonly repopulate_text: () => void,
     readonly update_unread_count: (count: number) => void,

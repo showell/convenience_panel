@@ -20,13 +20,20 @@ interface PanelBuildArgs {
     services: Handlers,
 }
 
-type ConveneniencePanel = {
+type PanelWidgets = {
+    all_messages: all_messages_component.AllMessagesWidget,
+    drafts: drafts_component.DraftsWidget,
+    mentions: mentions_component.MentionsWidget,
+}
+
+type ConveniencePanel = {
     elem: HTMLDivElement,
     repopulate_text: () => void,
     update_unread_count: (count: number) => void,
+    widgets: PanelWidgets,
 }
 
-export function fully_build({ services }: PanelBuildArgs): ConveneniencePanel {
+export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
     const div = document.createElement("div");
 
     const {
@@ -46,33 +53,30 @@ export function fully_build({ services }: PanelBuildArgs): ConveneniencePanel {
         all_messages_menu,
         translate,
     });
-    div.append(all_messages.li);
 
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
         translate,
     });
-    div.append(recent_conversations.li);
 
     const mentions = mentions_component.fully_build({
         launch_mentions,
         translate,
     });
-    div.append(mentions.li);
 
     const starred_messages = starred_messages_component.fully_build({
         launch_starred_messages,
         starred_messages_menu,
         translate,
     });
-    div.append(starred_messages.li);
 
     const drafts = drafts_component.fully_build({
         launch_drafts,
         drafts_menu,
         translate,
     });
-    div.append(drafts.li);
+
+    div.append(all_messages.li, recent_conversations.li, mentions.li, starred_messages.li, drafts.li);
 
     function repopulate_text() {
         all_messages.repopulate_text();
@@ -86,9 +90,16 @@ export function fully_build({ services }: PanelBuildArgs): ConveneniencePanel {
         all_messages.update_unread_count(count);
     }
 
+    const widgets = {
+        all_messages,
+        drafts,
+        mentions,
+    };
+
     return {
         elem: div,
         repopulate_text,
         update_unread_count,
+        widgets,
     };
 }
