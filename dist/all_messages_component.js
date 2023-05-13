@@ -41,6 +41,7 @@ export function fully_build({ launch_all_messages, all_messages_menu, translate,
     const widgets = {
         main_link: all_messages.main_link,
         unread_count: all_messages.unread_count,
+        vdot_icon: all_messages.vdot_icon,
     };
     return {
         li: all_messages.li,

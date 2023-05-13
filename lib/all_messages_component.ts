@@ -1,4 +1,4 @@
-import { build_vdot_icon } from "./icon_helpers.js";
+import { build_vdot_icon, VdotWidget } from "./icon_helpers.js";
 import { build_unread_count, UnreadCountWidget } from "./unread_count_helpers.js";
 import {
     build_list_item,
@@ -16,6 +16,7 @@ interface BuildArgs {
 type Widgets = {
     readonly main_link: MainLinkWidget,
     readonly unread_count: UnreadCountWidget,
+    readonly vdot_icon: VdotWidget,
 } 
 
 export type AllMessagesWidget = {
@@ -79,6 +80,7 @@ export function fully_build({
     const widgets = {
         main_link: all_messages.main_link,
         unread_count: all_messages.unread_count,
+        vdot_icon: all_messages.vdot_icon,
     };
 
     return {
