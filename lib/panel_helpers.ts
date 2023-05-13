@@ -1,13 +1,14 @@
-import { build_top_left_panel_icon } from "./icon_helpers.js";
+import { DecorativeIcon, build_top_left_panel_icon } from "./icon_helpers.js";
 
 interface LinkArgs {
     href: string;
     icon_name: string;
 }
 
-type MainLink = {
-    elem: HTMLAnchorElement;
-    span: HTMLSpanElement;
+export type MainLinkWidget = {
+    elem: HTMLAnchorElement,
+    icon: DecorativeIcon,
+    span: HTMLSpanElement,
 };
 
 export function build_list_item() {
@@ -17,7 +18,7 @@ export function build_list_item() {
     return li;
 }
 
-export function build_main_link({ href, icon_name }: LinkArgs): MainLink {
+export function build_main_link({ href, icon_name }: LinkArgs): MainLinkWidget {
     const elem = document.createElement("a");
     elem.href = href;
 
@@ -26,9 +27,9 @@ export function build_main_link({ href, icon_name }: LinkArgs): MainLink {
 
     elem.classList.add("style-panel-main-link");
 
-    elem.append(icon, span);
+    elem.append(icon.elem, span);
 
-    return { elem, span };
+    return { elem, icon, span };
 }
 
 export function build_right_align_span(): HTMLSpanElement {

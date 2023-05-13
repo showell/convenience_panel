@@ -10,8 +10,8 @@ export function build_main_link({ href, icon_name }) {
     const icon = build_top_left_panel_icon({ icon_name });
     const span = document.createElement("span");
     elem.classList.add("style-panel-main-link");
-    elem.append(icon, span);
-    return { elem, span };
+    elem.append(icon.elem, span);
+    return { elem, icon, span };
 }
 export function build_right_align_span() {
     const span = document.createElement("span");

@@ -1,9 +1,9 @@
-type UnreadCount = {
+export type UnreadCountWidget = {
     elem: HTMLSpanElement,
     update_count: (count: number) => void,
 }
 
-export function build_unread_count(): UnreadCount {
+export function build_unread_count(): UnreadCountWidget {
     const elem = document.createElement("span");
     elem.classList.add("style-panel-unread-counter");
 

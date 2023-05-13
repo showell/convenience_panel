@@ -1,12 +1,12 @@
 export function build_top_left_panel_icon({ icon_name }) {
-    const span = document.createElement("span");
+    const elem = document.createElement("span");
     const icon = document.createElement("i");
     icon.classList.add("fa");
     icon.classList.add(icon_name);
     icon.setAttribute("aria-hidden", "true");
     icon.classList.add("style-panel-decorative-icon");
-    span.append(icon);
-    return span;
+    elem.append(icon);
+    return { elem };
 }
 export function build_vdot_icon() {
     const span = document.createElement("span");

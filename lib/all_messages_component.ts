@@ -1,9 +1,10 @@
 import { build_vdot_icon } from "./icon_helpers.js";
-import { build_unread_count } from "./unread_count_helpers.js";
+import { build_unread_count, UnreadCountWidget } from "./unread_count_helpers.js";
 import {
     build_list_item,
     build_main_link,
     build_right_align_span,
+    MainLinkWidget,
 } from "./panel_helpers.js";
 
 interface BuildArgs {
@@ -12,10 +13,16 @@ interface BuildArgs {
     readonly translate: (s: string) => string;
 }
 
+type Widgets = {
+    readonly main_link: MainLinkWidget,
+    readonly unread_count: UnreadCountWidget,
+} 
+
 export type AllMessagesWidget = {
     readonly li: HTMLElement,
     readonly repopulate_text: () => void,
     readonly update_unread_count: (count: number) => void,
+    readonly widgets: Widgets,
 }
 
 function build() {
@@ -69,9 +76,15 @@ export function fully_build({
         all_messages.unread_count.update_count(count);
     }
 
+    const widgets = {
+        main_link: all_messages.main_link,
+        unread_count: all_messages.unread_count,
+    };
+
     return {
         li: all_messages.li,
         repopulate_text,
         update_unread_count,
+        widgets,
     };
 }

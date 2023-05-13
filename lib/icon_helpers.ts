@@ -2,8 +2,12 @@ interface IconArgs {
     icon_name: string;
 }
 
-export function build_top_left_panel_icon({ icon_name }: IconArgs) {
-    const span = document.createElement("span");
+export type DecorativeIcon = {
+    elem: HTMLSpanElement,
+}
+
+export function build_top_left_panel_icon({ icon_name }: IconArgs): DecorativeIcon {
+    const elem = document.createElement("span");
 
     const icon = document.createElement("i");
 
@@ -13,9 +17,9 @@ export function build_top_left_panel_icon({ icon_name }: IconArgs) {
 
     icon.classList.add("style-panel-decorative-icon");
 
-    span.append(icon);
+    elem.append(icon);
 
-    return span;
+    return { elem };
 }
 
 export function build_vdot_icon() {

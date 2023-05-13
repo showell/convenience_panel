@@ -17,7 +17,7 @@ type Handlers = {
 }
 
 interface PanelBuildArgs {
-    services: Handlers,
+    readonly services: Handlers,
 }
 
 type PanelWidgets = {
