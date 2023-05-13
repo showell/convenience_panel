@@ -11,8 +11,16 @@ export function build_handlers() {
         console.log("Launch Mentions view");
     }
 
+    function launch_starred_messages() {
+        console.log("Launch Starred Messages view");
+    }
+
     function all_messages_menu() {
         console.log("pop up All Messages vdot menu");
+    }
+
+    function starred_messages_menu() {
+        console.log("pop up Starred Messages vdot menu");
     }
 
     function translate(s) {
@@ -21,6 +29,8 @@ export function build_handlers() {
                 return "Tous les messages";
             } else if (s == "Recent conversations") {
                 return "Conversations récentes";
+            } else if (s == "Starred messages") {
+                return "Messages favoris";
             }
         }
 
@@ -28,10 +38,12 @@ export function build_handlers() {
     }
 
     return {
-        launch_all_messages,
-        launch_recent_conversations,
-        launch_mentions,
         all_messages_menu,
+        launch_all_messages,
+        launch_mentions,
+        launch_recent_conversations,
+        launch_starred_messages,
+        starred_messages_menu,
         translate,
     };
 }
