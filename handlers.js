@@ -3,6 +3,10 @@ export function build_handlers() {
         console.log("Launch All Messages");
     }
 
+    function launch_drafts() {
+        console.log("Launch Drafts");
+    }
+
     function launch_recent_conversations() {
         console.log("Launch Recent Conversations");
     }
@@ -19,6 +23,10 @@ export function build_handlers() {
         console.log("pop up All Messages vdot menu");
     }
 
+    function drafts_menu() {
+        console.log("pop up Drafts vdot menu");
+    }
+
     function starred_messages_menu() {
         console.log("pop up Starred Messages vdot menu");
     }
@@ -31,6 +39,8 @@ export function build_handlers() {
                 return "Conversations récentes";
             } else if (s == "Starred messages") {
                 return "Messages favoris";
+            } else if (s == "Drafts") {
+                return "Brouillons";
             }
         }
 
@@ -39,7 +49,9 @@ export function build_handlers() {
 
     return {
         all_messages_menu,
+        drafts_menu,
         launch_all_messages,
+        launch_drafts,
         launch_mentions,
         launch_recent_conversations,
         launch_starred_messages,
