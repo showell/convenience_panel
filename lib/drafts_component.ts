@@ -31,7 +31,7 @@ function build() {
     const right = build_right_align_span();
 
     li.append(main_link.elem);
-    right.append(unread_count.elem, vdot_icon);
+    right.append(unread_count.elem, vdot_icon.elem);
     li.append(right);
 
     return {
@@ -55,7 +55,7 @@ export function fully_build({
         drafts.main_link.elem.addEventListener("click", () => {
             launch_drafts();
         });
-        drafts.vdot_icon.addEventListener("click", () => {
+        drafts.vdot_icon.elem.addEventListener("click", () => {
             drafts_menu();
         });
     }

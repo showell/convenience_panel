@@ -9,7 +9,7 @@ export function build_top_left_panel_icon({ icon_name }) {
     return { elem };
 }
 export function build_vdot_icon() {
-    const span = document.createElement("span");
+    const elem = document.createElement("span");
     const svg = `
         <svg
             aria-hidden="true"
@@ -25,8 +25,8 @@ export function build_vdot_icon() {
             </path>
         </svg>
     `;
-    span.innerHTML = svg;
-    span.classList.add("style-panel-popup-menu-icon");
-    return span;
+    elem.innerHTML = svg;
+    elem.classList.add("style-panel-popup-menu-icon");
+    return { elem, svg };
 }
 //# sourceMappingURL=icon_helpers.js.map

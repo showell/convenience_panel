@@ -11,7 +11,7 @@ function build() {
     const unread_count = build_unread_count();
     const right = build_right_align_span();
     li.append(main_link.elem);
-    right.append(unread_count.elem, vdot_icon);
+    right.append(unread_count.elem, vdot_icon.elem);
     li.append(right);
     return {
         li,
@@ -28,7 +28,7 @@ export function fully_build({ launch_all_messages, all_messages_menu, translate,
         all_messages.main_link.elem.addEventListener("click", () => {
             launch_all_messages();
         });
-        all_messages.vdot_icon.addEventListener("click", () => {
+        all_messages.vdot_icon.elem.addEventListener("click", () => {
             all_messages_menu();
         });
     }
