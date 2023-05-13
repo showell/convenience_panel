@@ -25,4 +25,6 @@ import { build_handlers } from "./handlers.js";
 
     document.body.append(french_button);
     document.body.append(unread_button);
+
+    window.panel = panel;
 }
