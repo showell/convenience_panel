@@ -37,8 +37,11 @@ export function fully_build({ services }) {
         starred_messages.repopulate_text();
         drafts.repopulate_text();
     }
-    function update_unread_count(count) {
-        all_messages.update_unread_count(count);
+    function update_unread_count(counts) {
+        console.log(counts);
+        all_messages.update_unread_count(counts.all_messages);
+        starred_messages.update_unread_count(counts.starred_messages);
+        drafts.update_unread_count(counts.drafts);
     }
     const widgets = {
         all_messages,

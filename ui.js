@@ -20,7 +20,11 @@ import { build_handlers } from "./handlers.js";
     unread_button.innerText = "Set unreads";
 
     unread_button.addEventListener("click", () => {
-        panel.update_unread_count(20);
+        panel.update_unread_count({
+            all_messages: 10,
+            starred_messages: 20,
+            drafts: 30,
+        });
     });
 
     document.body.append(french_button);

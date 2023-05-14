@@ -28,10 +28,16 @@ type PanelWidgets = {
     starred_messages: starred_messages_component.StarredMessagesWidget,
 }
 
+type UnreadCounts = {
+    all_messages: number,
+    starred_messages: number,
+    drafts: number,
+}
+
 type ConveniencePanel = {
     elem: HTMLDivElement,
     repopulate_text: () => void,
-    update_unread_count: (count: number) => void,
+    update_unread_count: (counts: UnreadCounts) => void,
     widgets: PanelWidgets,
 }
 
@@ -88,8 +94,10 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         drafts.repopulate_text();
     }
 
-    function update_unread_count(count: number): void {
-        all_messages.update_unread_count(count);
+    function update_unread_count(counts: UnreadCounts): void {
+        all_messages.update_unread_count(counts.all_messages);
+        starred_messages.update_unread_count(counts.starred_messages);
+        drafts.update_unread_count(counts.drafts);
     }
 
     const widgets = {
