@@ -30,8 +30,9 @@ type PanelWidgets = {
 
 type UnreadCounts = {
     all_messages: number,
-    starred_messages: number,
     drafts: number,
+    mentions: number,
+    starred_messages: number,
 }
 
 type ConveniencePanel = {
@@ -96,8 +97,9 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
 
     function update_unread_count(counts: UnreadCounts): void {
         all_messages.update_unread_count(counts.all_messages);
-        starred_messages.update_unread_count(counts.starred_messages);
         drafts.update_unread_count(counts.drafts);
+        mentions.update_unread_count(counts.mentions);
+        starred_messages.update_unread_count(counts.starred_messages);
     }
 
     const widgets = {

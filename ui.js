@@ -22,8 +22,9 @@ import { build_handlers } from "./handlers.js";
     unread_button.addEventListener("click", () => {
         panel.update_unread_count({
             all_messages: 10,
-            starred_messages: 20,
-            drafts: 30,
+            mentions: 20,
+            starred_messages: 30,
+            drafts: 40,
         });
     });
 
