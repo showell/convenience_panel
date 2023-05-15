@@ -13,10 +13,10 @@ interface StarredBuildArgs {
 }
 
 export type StarredMessagesWidget = {
-    readonly li: HTMLElement,
-    readonly repopulate_text: () => void,
-    readonly update_unread_count: (count: number) => void,
-}
+    readonly li: HTMLElement;
+    readonly repopulate_text: () => void;
+    readonly update_unread_count: (count: number) => void;
+};
 
 function build() {
     const li = build_list_item();
@@ -48,7 +48,8 @@ export function fully_build({
     translate,
 }: StarredBuildArgs): StarredMessagesWidget {
     function repopulate_text() {
-        starred_messages.main_link.span.innerText = translate("Starred messages");
+        starred_messages.main_link.span.innerText =
+            translate("Starred messages");
     }
 
     function wire_up_handlers() {

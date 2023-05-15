@@ -1,5 +1,8 @@
 import { build_vdot_icon, VdotWidget } from "./icon_helpers.js";
-import { build_unread_count, UnreadCountWidget } from "./unread_count_helpers.js";
+import {
+    build_unread_count,
+    UnreadCountWidget,
+} from "./unread_count_helpers.js";
 import {
     build_list_item,
     build_main_link,
@@ -14,17 +17,17 @@ interface BuildArgs {
 }
 
 type Widgets = {
-    readonly main_link: MainLinkWidget,
-    readonly unread_count: UnreadCountWidget,
-    readonly vdot_icon: VdotWidget,
-} 
+    readonly main_link: MainLinkWidget;
+    readonly unread_count: UnreadCountWidget;
+    readonly vdot_icon: VdotWidget;
+};
 
 export type AllMessagesWidget = {
-    readonly li: HTMLElement,
-    readonly repopulate_text: () => void,
-    readonly update_unread_count: (count: number) => void,
-    readonly widgets: Widgets,
-}
+    readonly li: HTMLElement;
+    readonly repopulate_text: () => void;
+    readonly update_unread_count: (count: number) => void;
+    readonly widgets: Widgets;
+};
 
 function build() {
     const li = build_list_item();

@@ -14,33 +14,33 @@ type Handlers = {
     readonly launch_starred_messages: () => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
-}
+};
 
 interface PanelBuildArgs {
-    readonly services: Handlers,
+    readonly services: Handlers;
 }
 
 type PanelWidgets = {
-    all_messages: all_messages_component.AllMessagesWidget,
-    drafts: drafts_component.DraftsWidget,
-    mentions: mentions_component.MentionsWidget,
-    recent_conversations: recent_conversations_component.RecentConversationsWidget,
-    starred_messages: starred_messages_component.StarredMessagesWidget,
-}
+    all_messages: all_messages_component.AllMessagesWidget;
+    drafts: drafts_component.DraftsWidget;
+    mentions: mentions_component.MentionsWidget;
+    recent_conversations: recent_conversations_component.RecentConversationsWidget;
+    starred_messages: starred_messages_component.StarredMessagesWidget;
+};
 
 type UnreadCounts = {
-    all_messages: number,
-    drafts: number,
-    mentions: number,
-    starred_messages: number,
-}
+    all_messages: number;
+    drafts: number;
+    mentions: number;
+    starred_messages: number;
+};
 
 type ConveniencePanel = {
-    elem: HTMLDivElement,
-    repopulate_text: () => void,
-    update_unread_count: (counts: UnreadCounts) => void,
-    widgets: PanelWidgets,
-}
+    elem: HTMLDivElement;
+    repopulate_text: () => void;
+    update_unread_count: (counts: UnreadCounts) => void;
+    widgets: PanelWidgets;
+};
 
 export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
     const div = document.createElement("div");
@@ -85,7 +85,13 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         translate,
     });
 
-    div.append(all_messages.li, recent_conversations.li, mentions.li, starred_messages.li, drafts.li);
+    div.append(
+        all_messages.li,
+        recent_conversations.li,
+        mentions.li,
+        starred_messages.li,
+        drafts.li
+    );
 
     function repopulate_text() {
         all_messages.repopulate_text();

@@ -6,9 +6,9 @@ interface LinkArgs {
 }
 
 export type MainLinkWidget = {
-    elem: HTMLAnchorElement,
-    icon: DecorativeIcon,
-    span: HTMLSpanElement,
+    elem: HTMLAnchorElement;
+    icon: DecorativeIcon;
+    span: HTMLSpanElement;
 };
 
 export function build_list_item() {

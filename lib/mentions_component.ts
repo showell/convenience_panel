@@ -1,5 +1,13 @@
-import { build_list_item, build_main_link, build_right_align_span, MainLinkWidget } from "./panel_helpers.js";
-import { build_unread_count, UnreadCountWidget } from "./unread_count_helpers.js";
+import {
+    build_list_item,
+    build_main_link,
+    build_right_align_span,
+    MainLinkWidget,
+} from "./panel_helpers.js";
+import {
+    build_unread_count,
+    UnreadCountWidget,
+} from "./unread_count_helpers.js";
 
 interface BuildArgs {
     readonly launch_mentions: () => void;
@@ -7,16 +15,16 @@ interface BuildArgs {
 }
 
 type Widgets = {
-    readonly main_link: MainLinkWidget,
-    readonly unread_count: UnreadCountWidget,
-} 
+    readonly main_link: MainLinkWidget;
+    readonly unread_count: UnreadCountWidget;
+};
 
 export type MentionsWidget = {
-    readonly li: HTMLElement,
-    readonly repopulate_text: () => void,
-    readonly update_unread_count: (count: number) => void,
-    readonly widgets: Widgets,
-}
+    readonly li: HTMLElement;
+    readonly repopulate_text: () => void;
+    readonly update_unread_count: (count: number) => void;
+    readonly widgets: Widgets;
+};
 
 function build() {
     const li = build_list_item();
@@ -67,7 +75,6 @@ export function fully_build({
         main_link: mentions.main_link,
         unread_count: mentions.unread_count,
     };
-
 
     return {
         li: mentions.li,

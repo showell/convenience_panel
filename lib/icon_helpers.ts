@@ -3,15 +3,17 @@ interface IconArgs {
 }
 
 export type DecorativeIcon = {
-    readonly elem: HTMLSpanElement,
-}
+    readonly elem: HTMLSpanElement;
+};
 
 export type VdotWidget = {
-    readonly elem: HTMLSpanElement,
-    readonly svg: string,
-}
+    readonly elem: HTMLSpanElement;
+    readonly svg: string;
+};
 
-export function build_top_left_panel_icon({ icon_name }: IconArgs): DecorativeIcon {
+export function build_top_left_panel_icon({
+    icon_name,
+}: IconArgs): DecorativeIcon {
     const elem = document.createElement("span");
 
     const icon = document.createElement("i");
