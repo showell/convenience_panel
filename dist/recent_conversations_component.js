@@ -24,9 +24,13 @@ export function fully_build({ launch_recent_conversations, translate, }) {
     const recent = build();
     wire_up_handlers();
     repopulate_text();
+    const widgets = {
+        main_link: recent.main_link,
+    };
     return {
         li: recent.li,
         repopulate_text,
+        widgets,
     };
 }
 //# sourceMappingURL=recent_conversations_component.js.map

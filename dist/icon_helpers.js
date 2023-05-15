@@ -1,4 +1,4 @@
-export function build_top_left_panel_icon({ icon_name }) {
+export function build_top_left_panel_icon({ icon_name, }) {
     const elem = document.createElement("span");
     const icon = document.createElement("i");
     icon.classList.add("fa");

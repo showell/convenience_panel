@@ -22,7 +22,8 @@ function build() {
 }
 export function fully_build({ launch_starred_messages, starred_messages_menu, translate, }) {
     function repopulate_text() {
-        starred_messages.main_link.span.innerText = translate("Starred messages");
+        starred_messages.main_link.span.innerText =
+            translate("Starred messages");
     }
     function wire_up_handlers() {
         starred_messages.main_link.elem.addEventListener("click", () => {
