@@ -39,10 +39,16 @@ export function fully_build({ launch_starred_messages, starred_messages_menu, tr
     function update_unread_count(count) {
         starred_messages.unread_count.update_count(count);
     }
+    const widgets = {
+        main_link: starred_messages.main_link,
+        unread_count: starred_messages.unread_count,
+        vdot_icon: starred_messages.vdot_icon,
+    };
     return {
         li: starred_messages.li,
         repopulate_text,
         update_unread_count,
+        widgets,
     };
 }
 //# sourceMappingURL=starred_messages_component.js.map
