@@ -24,6 +24,7 @@
 .style-panel-list-item-right {
     display: flex;
     flex-direction: row;
+    min-width: 50px;
 }
 
 .style-panel-popup-menu-icon {
