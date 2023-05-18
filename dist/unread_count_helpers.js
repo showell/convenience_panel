@@ -3,9 +3,13 @@ export function build_unread_count() {
     elem.classList.add("style-panel-unread-counter");
     elem.style.visibility = "hidden";
     function update_count(count) {
-        elem.style.visibility = "visible";
-        console.log(`${count}`);
-        elem.innerText = `${count}`;
+        if (count === 0) {
+            elem.style.visibility = "hidden";
+        }
+        else {
+            elem.style.visibility = "visible";
+            elem.innerText = `${count}`;
+        }
     }
     return { elem, update_count };
 }

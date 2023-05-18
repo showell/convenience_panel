@@ -28,8 +28,21 @@ import { build_handlers } from "./handlers.js";
         });
     });
 
+    const clear_unreads_button = document.createElement("button");
+    clear_unreads_button.innerText = "Clear unreads";
+
+    clear_unreads_button.addEventListener("click", () => {
+        panel.update_unread_count({
+            all_messages: 0,
+            mentions: 0,
+            starred_messages: 0,
+            drafts: 0,
+        });
+    });
+
     document.body.append(french_button);
     document.body.append(unread_button);
+    document.body.append(clear_unreads_button);
 
     window.panel = panel;
 }
