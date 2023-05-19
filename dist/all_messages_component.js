@@ -8,7 +8,8 @@ function build() {
         icon_name: "fa-align-left",
     });
     const vdot_icon = build_vdot_icon();
-    const unread_count = build_unread_count();
+    const classic = true;
+    const unread_count = build_unread_count({ classic });
     const right = build_right_align_span();
     li.append(main_link.elem);
     right.append(unread_count.elem, vdot_icon.elem);

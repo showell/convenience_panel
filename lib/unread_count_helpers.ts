@@ -3,9 +3,17 @@ export type UnreadCountWidget = {
     update_count: (count: number) => void;
 };
 
-export function build_unread_count(): UnreadCountWidget {
+interface Args {
+    classic: boolean;
+}
+
+export function build_unread_count({classic}: Args): UnreadCountWidget {
     const elem = document.createElement("span");
-    elem.classList.add("style-panel-unread-counter");
+    if (classic) {
+        elem.classList.add("style-panel-unread-counter-classic");
+    } else {
+        elem.classList.add("style-panel-unread-counter");
+    }
 
     elem.style.visibility = "hidden";
 

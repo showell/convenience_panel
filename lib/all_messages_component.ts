@@ -38,7 +38,8 @@ function build() {
     });
 
     const vdot_icon = build_vdot_icon();
-    const unread_count = build_unread_count();
+    const classic = true;
+    const unread_count = build_unread_count({classic});
     const right = build_right_align_span();
 
     li.append(main_link.elem);

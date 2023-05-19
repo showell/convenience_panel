@@ -40,10 +40,16 @@
     width: 15px;
 }
 
+.style-panel-unread-counter-classic,
 .style-panel-unread-counter {
     border: .5px solid #7e827c;
     border-radius: 4px;
     padding-right: 4px;
     padding-left: 4px;
     font-size: 12px;
+}
+
+.style-panel-unread-counter-classic {
+    background: #7e827c;
+    color: #fff;
 }

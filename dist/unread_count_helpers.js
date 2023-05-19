@@ -1,6 +1,11 @@
-export function build_unread_count() {
+export function build_unread_count({ classic }) {
     const elem = document.createElement("span");
-    elem.classList.add("style-panel-unread-counter");
+    if (classic) {
+        elem.classList.add("style-panel-unread-counter-classic");
+    }
+    else {
+        elem.classList.add("style-panel-unread-counter");
+    }
     elem.style.visibility = "hidden";
     function update_count(count) {
         if (count === 0) {

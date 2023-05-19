@@ -6,7 +6,8 @@ function build() {
         href: "#narrow/is/mentioned",
         icon_name: "fa-at",
     });
-    const unread_count = build_unread_count();
+    const classic = true;
+    const unread_count = build_unread_count({ classic });
     const right = build_right_align_span();
     right.append(unread_count.elem);
     li.append(main_link.elem, right);
