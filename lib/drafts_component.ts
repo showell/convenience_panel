@@ -6,11 +6,11 @@ import {
     build_right_align_span,
 } from "./panel_helpers.js";
 
-interface DraftsBuildArgs {
+type DraftsBuildArgs = {
     readonly launch_drafts: () => void;
     readonly drafts_menu: () => void;
     readonly translate: (s: string) => string;
-}
+};
 
 export type DraftsWidget = {
     readonly li: HTMLElement;

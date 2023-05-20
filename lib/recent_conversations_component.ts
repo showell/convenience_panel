@@ -1,9 +1,13 @@
-import { build_list_item, build_main_link, MainLinkWidget } from "./panel_helpers.js";
+import {
+    build_list_item,
+    build_main_link,
+    MainLinkWidget,
+} from "./panel_helpers.js";
 
-interface BuildArgs {
+type BuildArgs = {
     readonly launch_recent_conversations: () => void;
     readonly translate: (s: string) => string;
-}
+};
 
 type Widgets = {
     readonly main_link: MainLinkWidget;
@@ -53,7 +57,7 @@ export function fully_build({
 
     const widgets = {
         main_link: recent.main_link,
-    }
+    };
 
     return {
         li: recent.li,

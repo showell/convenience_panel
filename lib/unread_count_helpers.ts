@@ -3,11 +3,11 @@ export type UnreadCountWidget = {
     update_count: (count: number) => void;
 };
 
-interface Args {
+type Args = {
     classic: boolean;
-}
+};
 
-export function build_unread_count({classic}: Args): UnreadCountWidget {
+export function build_unread_count({ classic }: Args): UnreadCountWidget {
     const elem = document.createElement("span");
     if (classic) {
         elem.classList.add("style-panel-unread-counter-classic");

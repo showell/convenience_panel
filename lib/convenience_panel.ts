@@ -16,9 +16,9 @@ type Handlers = {
     readonly translate: (s: string) => string;
 };
 
-interface PanelBuildArgs {
+type PanelBuildArgs = {
     readonly services: Handlers;
-}
+};
 
 type PanelWidgets = {
     all_messages: all_messages_component.AllMessagesWidget;

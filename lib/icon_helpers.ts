@@ -1,6 +1,6 @@
-interface IconArgs {
+type IconArgs = {
     icon_name: string;
-}
+};
 
 export type DecorativeIcon = {
     readonly elem: HTMLSpanElement;

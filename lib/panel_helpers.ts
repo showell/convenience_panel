@@ -1,9 +1,9 @@
 import { DecorativeIcon, build_top_left_panel_icon } from "./icon_helpers.js";
 
-interface LinkArgs {
+type LinkArgs = {
     href: string;
     icon_name: string;
-}
+};
 
 export type MainLinkWidget = {
     elem: HTMLAnchorElement;

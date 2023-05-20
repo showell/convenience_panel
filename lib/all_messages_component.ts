@@ -10,11 +10,11 @@ import {
     MainLinkWidget,
 } from "./panel_helpers.js";
 
-interface BuildArgs {
+type BuildArgs = {
     readonly launch_all_messages: () => void;
     readonly all_messages_menu: () => void;
     readonly translate: (s: string) => string;
-}
+};
 
 type Widgets = {
     readonly main_link: MainLinkWidget;
@@ -39,7 +39,7 @@ function build() {
 
     const vdot_icon = build_vdot_icon();
     const classic = true;
-    const unread_count = build_unread_count({classic});
+    const unread_count = build_unread_count({ classic });
     const right = build_right_align_span();
 
     li.append(main_link.elem);

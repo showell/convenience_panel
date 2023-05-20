@@ -1,4 +1,4 @@
-import { build_list_item, build_main_link } from "./panel_helpers.js";
+import { build_list_item, build_main_link, } from "./panel_helpers.js";
 function build() {
     const li = build_list_item();
     const main_link = build_main_link({

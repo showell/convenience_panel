@@ -9,10 +9,10 @@ import {
     UnreadCountWidget,
 } from "./unread_count_helpers.js";
 
-interface BuildArgs {
+type BuildArgs = {
     readonly launch_mentions: () => void;
     readonly translate: (s: string) => string;
-}
+};
 
 type Widgets = {
     readonly main_link: MainLinkWidget;

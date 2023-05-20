@@ -1,5 +1,8 @@
 import { build_vdot_icon, VdotWidget } from "./icon_helpers.js";
-import { build_unread_count, UnreadCountWidget } from "./unread_count_helpers.js";
+import {
+    build_unread_count,
+    UnreadCountWidget,
+} from "./unread_count_helpers.js";
 import {
     build_list_item,
     build_main_link,
@@ -7,11 +10,11 @@ import {
     MainLinkWidget,
 } from "./panel_helpers.js";
 
-interface StarredBuildArgs {
+type StarredBuildArgs = {
     readonly launch_starred_messages: () => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
-}
+};
 
 type Widgets = {
     readonly main_link: MainLinkWidget;
