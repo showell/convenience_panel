@@ -9,11 +9,21 @@ import { build_handlers } from "./handlers.js";
     const panel = fully_build({ services });
     demo.append(panel.elem);
 
-    const french_button = document.createElement("button");
-    french_button.innerText = "fr";
-    french_button.addEventListener("click", () => {
+    function make_test_button({ label, action }) {
+        const button = document.createElement("button");
+        button.innerText = label;
+        button.addEventListener("click", action);
+        document.body.append(button);
+    }
+
+    function translate_to_french() {
         zulip.lang = "fr";
         panel.repopulate_text({ translate: services.translate });
+    }
+
+    const french_button = make_test_button({
+        label: "French",
+        action: translate_to_french,
     });
 
     const unread_button = document.createElement("button");
@@ -40,7 +50,6 @@ import { build_handlers } from "./handlers.js";
         });
     });
 
-    document.body.append(french_button);
     document.body.append(unread_button);
     document.body.append(clear_unreads_button);
 
