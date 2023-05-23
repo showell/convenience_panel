@@ -55,5 +55,16 @@ import { build_handlers } from "./handlers.js";
         action: clear_unreads,
     });
 
+    function hide_stuff_for_screen_reader() {
+        for (const elem of document.querySelectorAll("[aria-hidden]")) {
+            elem.style.visibility = "hidden";
+        }
+    }
+
+    make_test_button({
+        label: "Hide aria-hidden elements",
+        action: hide_stuff_for_screen_reader,
+    });
+
     window.panel = panel;
 }
