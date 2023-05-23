@@ -44,9 +44,10 @@
 .style-panel-unread-counter {
     border: .5px solid #7e827c;
     border-radius: 4px;
-    padding-right: 4px;
-    padding-left: 4px;
+    padding-right: 2px;
+    padding-left: 3px;
     font-size: 12px;
+    width: 18px;
 }
 
 .style-panel-unread-counter-classic {

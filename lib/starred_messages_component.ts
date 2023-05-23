@@ -14,6 +14,7 @@ type StarredBuildArgs = {
     readonly launch_starred_messages: () => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
+    readonly wants_starred_count: () => boolean;
 };
 
 type Widgets = {
@@ -58,6 +59,7 @@ export function fully_build({
     launch_starred_messages,
     starred_messages_menu,
     translate,
+    wants_starred_count,
 }: StarredBuildArgs): StarredMessagesWidget {
     function repopulate_text() {
         starred_messages.main_link.span.innerText =
@@ -79,7 +81,12 @@ export function fully_build({
     repopulate_text();
 
     function update_unread_count(count: number): void {
-        starred_messages.unread_count.update_count(count);
+        if (wants_starred_count()) {
+            starred_messages.unread_count.update_count(count);
+        } else {
+            // This is slightly hacky, but unread counts are hidden for 0.
+            starred_messages.unread_count.update_count(0);
+        }
     }
 
     const widgets = {

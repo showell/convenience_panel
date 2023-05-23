@@ -14,6 +14,7 @@ type Handlers = {
     readonly launch_starred_messages: () => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
+    readonly wants_starred_count: () => boolean;
 };
 
 type PanelBuildArgs = {
@@ -55,6 +56,7 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_starred_messages,
         starred_messages_menu,
         translate,
+        wants_starred_count,
     } = services;
 
     const all_messages = all_messages_component.fully_build({
@@ -77,6 +79,7 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_starred_messages,
         starred_messages_menu,
         translate,
+        wants_starred_count,
     });
 
     const drafts = drafts_component.fully_build({

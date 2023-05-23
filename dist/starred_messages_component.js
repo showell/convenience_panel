@@ -21,7 +21,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({ launch_starred_messages, starred_messages_menu, translate, }) {
+export function fully_build({ launch_starred_messages, starred_messages_menu, translate, wants_starred_count, }) {
     function repopulate_text() {
         starred_messages.main_link.span.innerText =
             translate("Starred messages");
@@ -38,7 +38,13 @@ export function fully_build({ launch_starred_messages, starred_messages_menu, tr
     wire_up_handlers();
     repopulate_text();
     function update_unread_count(count) {
-        starred_messages.unread_count.update_count(count);
+        if (wants_starred_count()) {
+            starred_messages.unread_count.update_count(count);
+        }
+        else {
+            // This is slightly hacky, but unread counts are hidden for 0.
+            starred_messages.unread_count.update_count(0);
+        }
     }
     const widgets = {
         main_link: starred_messages.main_link,

@@ -5,7 +5,7 @@ import * as recent_conversations_component from "./recent_conversations_componen
 import * as starred_messages_component from "./starred_messages_component.js";
 export function fully_build({ services }) {
     const div = document.createElement("div");
-    const { all_messages_menu, drafts_menu, launch_all_messages, launch_drafts, launch_mentions, launch_recent_conversations, launch_starred_messages, starred_messages_menu, translate, } = services;
+    const { all_messages_menu, drafts_menu, launch_all_messages, launch_drafts, launch_mentions, launch_recent_conversations, launch_starred_messages, starred_messages_menu, translate, wants_starred_count, } = services;
     const all_messages = all_messages_component.fully_build({
         launch_all_messages,
         all_messages_menu,
@@ -23,6 +23,7 @@ export function fully_build({ services }) {
         launch_starred_messages,
         starred_messages_menu,
         translate,
+        wants_starred_count,
     });
     const drafts = drafts_component.fully_build({
         launch_drafts,

@@ -3,6 +3,7 @@ import { build_handlers } from "./handlers.js";
 
 {
     zulip.lang = "en";
+    zulip.wants_starred_count = false;
 
     const demo = document.querySelector("#demo");
     const services = build_handlers();
@@ -64,6 +65,16 @@ import { build_handlers } from "./handlers.js";
     make_test_button({
         label: "Hide aria-hidden elements",
         action: hide_stuff_for_screen_reader,
+    });
+
+    function turn_on_starred_counts() {
+        zulip.wants_starred_count = true;
+        set_unreads();
+    }
+
+    make_test_button({
+        label: "Show starred counts",
+        action: turn_on_starred_counts,
     });
 
     window.panel = panel;
