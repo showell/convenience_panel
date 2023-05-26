@@ -3,11 +3,7 @@ import * as drafts_component from "./drafts_component.js";
 import * as mentions_component from "./mentions_component.js";
 import * as recent_conversations_component from "./recent_conversations_component.js";
 import * as starred_messages_component from "./starred_messages_component.js";
-
-type TippyTemplateArgs = {
-    readonly elem: HTMLElement;
-    readonly template: string;
-};
+import { TippyTemplateArgs } from "types";
 
 type Handlers = {
     readonly all_messages_menu: () => void;

@@ -9,11 +9,7 @@ import {
     build_right_align_span,
     MainLinkWidget,
 } from "./panel_helpers.js";
-
-type TippyTemplateArgs = {
-    readonly elem: HTMLElement;
-    readonly template: string;
-};
+import { TippyTemplateArgs } from "types";
 
 type BuildArgs = {
     readonly all_messages_menu: () => void;

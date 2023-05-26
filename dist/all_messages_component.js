@@ -36,7 +36,7 @@ export function fully_build({ all_messages_menu, launch_all_messages, set_tippy_
     function tippy_enable() {
         set_tippy_template_for_element({
             elem: all_messages.main_link.elem,
-            template: "all-message-tooltip-content"
+            template: "all-message-tooltip-content",
         });
     }
     const all_messages = build();
