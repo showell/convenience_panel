@@ -5,10 +5,12 @@ import {
     build_main_link,
     build_right_align_span,
 } from "./panel_helpers.js";
+import { TippyTemplateArgs } from "types";
 
-type DraftsBuildArgs = {
-    readonly launch_drafts: () => void;
+type BuildArgs = {
     readonly drafts_menu: () => void;
+    readonly launch_drafts: () => void;
+    readonly set_tippy_template_for_element: (arg0: TippyTemplateArgs) => void;
     readonly translate: (s: string) => string;
 };
 
@@ -44,10 +46,11 @@ function build() {
 }
 
 export function fully_build({
-    launch_drafts,
     drafts_menu,
+    launch_drafts,
+    set_tippy_template_for_element,
     translate,
-}: DraftsBuildArgs): DraftsWidget {
+}: BuildArgs): DraftsWidget {
     function repopulate_text() {
         drafts.main_link.span.innerText = translate("Drafts");
     }
@@ -61,10 +64,18 @@ export function fully_build({
         });
     }
 
+    function tippy_enable() {
+        set_tippy_template_for_element({
+            elem: drafts.main_link.elem,
+            template: "drafts-tooltip-content",
+        });
+    }
+
     const drafts = build();
 
     wire_up_handlers();
     repopulate_text();
+    tippy_enable();
 
     function update_unread_count(count: number): void {
         drafts.unread_count.update_count(count);

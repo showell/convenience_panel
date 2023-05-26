@@ -3,9 +3,11 @@ import {
     build_main_link,
     MainLinkWidget,
 } from "./panel_helpers.js";
+import { TippyTemplateArgs } from "types";
 
 type BuildArgs = {
     readonly launch_recent_conversations: () => void;
+    readonly set_tippy_template_for_element: (arg0: TippyTemplateArgs) => void;
     readonly translate: (s: string) => string;
 };
 
@@ -37,6 +39,7 @@ function build() {
 
 export function fully_build({
     launch_recent_conversations,
+    set_tippy_template_for_element,
     translate,
 }: BuildArgs) {
     function repopulate_text() {
@@ -50,10 +53,18 @@ export function fully_build({
         });
     }
 
+    function tippy_enable() {
+        set_tippy_template_for_element({
+            elem: recent.main_link.elem,
+            template: "recent-conversations-tooltip-content",
+        });
+    }
+
     const recent = build();
 
     wire_up_handlers();
     repopulate_text();
+    tippy_enable();
 
     const widgets = {
         main_link: recent.main_link,

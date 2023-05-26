@@ -12,8 +12,15 @@ export function fully_build({ services }) {
         set_tippy_template_for_element,
         translate,
     });
+    const drafts = drafts_component.fully_build({
+        drafts_menu,
+        launch_drafts,
+        set_tippy_template_for_element,
+        translate,
+    });
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
+        set_tippy_template_for_element,
         translate,
     });
     const mentions = mentions_component.fully_build({
@@ -25,11 +32,6 @@ export function fully_build({ services }) {
         starred_messages_menu,
         translate,
         wants_starred_count,
-    });
-    const drafts = drafts_component.fully_build({
-        launch_drafts,
-        drafts_menu,
-        translate,
     });
     div.append(all_messages.li, recent_conversations.li, mentions.li, starred_messages.li, drafts.li);
     function repopulate_text() {
