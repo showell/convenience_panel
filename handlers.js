@@ -51,6 +51,11 @@ export function build_handlers() {
         return zulip.wants_starred_count;
     }
 
+    function set_tippy_template_for_element({ elem, template }) {
+        const bogus_content = `(TODO: read from template ${template})`;
+        elem.title = bogus_content;
+    }
+
     return {
         all_messages_menu,
         drafts_menu,
@@ -59,6 +64,7 @@ export function build_handlers() {
         launch_mentions,
         launch_recent_conversations,
         launch_starred_messages,
+        set_tippy_template_for_element,
         starred_messages_menu,
         translate,
         wants_starred_count,

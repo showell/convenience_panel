@@ -21,7 +21,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({ launch_all_messages, all_messages_menu, translate, }) {
+export function fully_build({ all_messages_menu, launch_all_messages, set_tippy_template_for_element, translate, }) {
     function repopulate_text() {
         all_messages.main_link.span.innerText = translate("All messages");
     }
@@ -33,9 +33,16 @@ export function fully_build({ launch_all_messages, all_messages_menu, translate,
             all_messages_menu();
         });
     }
+    function tippy_enable() {
+        set_tippy_template_for_element({
+            elem: all_messages.main_link.elem,
+            template: "all-message-tooltip-content"
+        });
+    }
     const all_messages = build();
     wire_up_handlers();
     repopulate_text();
+    tippy_enable();
     function update_unread_count(count) {
         all_messages.unread_count.update_count(count);
     }

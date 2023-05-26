@@ -4,6 +4,11 @@ import * as mentions_component from "./mentions_component.js";
 import * as recent_conversations_component from "./recent_conversations_component.js";
 import * as starred_messages_component from "./starred_messages_component.js";
 
+type TippyTemplateArgs = {
+    readonly elem: HTMLElement;
+    readonly template: string;
+};
+
 type Handlers = {
     readonly all_messages_menu: () => void;
     readonly drafts_menu: () => void;
@@ -12,6 +17,7 @@ type Handlers = {
     readonly launch_mentions: () => void;
     readonly launch_recent_conversations: () => void;
     readonly launch_starred_messages: () => void;
+    readonly set_tippy_template_for_element: (arg0: TippyTemplateArgs) => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
     readonly wants_starred_count: () => boolean;
@@ -54,14 +60,16 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_mentions,
         launch_recent_conversations,
         launch_starred_messages,
+        set_tippy_template_for_element,
         starred_messages_menu,
         translate,
         wants_starred_count,
     } = services;
 
     const all_messages = all_messages_component.fully_build({
-        launch_all_messages,
         all_messages_menu,
+        launch_all_messages,
+        set_tippy_template_for_element,
         translate,
     });
 
