@@ -9,13 +9,12 @@ import {
     build_right_align_span,
     MainLinkWidget,
 } from "./panel_helpers.js";
-import { TippyTemplateArgs } from "types";
 
 type BuildArgs = {
     readonly all_messages_menu: () => void;
     readonly launch_all_messages: () => void;
     readonly translate: (s: string) => string;
-    readonly set_tippy_template_for_element: (arg0: TippyTemplateArgs) => void;
+    readonly tippy_enable_all_messages: (arg0: HTMLElement) => void;
 };
 
 type Widgets = {
@@ -59,7 +58,7 @@ function build() {
 export function fully_build({
     all_messages_menu,
     launch_all_messages,
-    set_tippy_template_for_element,
+    tippy_enable_all_messages,
     translate,
 }: BuildArgs): AllMessagesWidget {
     function repopulate_text() {
@@ -75,18 +74,11 @@ export function fully_build({
         });
     }
 
-    function tippy_enable() {
-        set_tippy_template_for_element({
-            elem: all_messages.main_link.elem,
-            template: "all-message-tooltip-content",
-        });
-    }
-
     const all_messages = build();
 
     wire_up_handlers();
     repopulate_text();
-    tippy_enable();
+    tippy_enable_all_messages(all_messages.main_link.elem);
 
     function update_unread_count(count: number): void {
         all_messages.unread_count.update_count(count);

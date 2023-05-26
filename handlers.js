@@ -51,9 +51,30 @@ export function build_handlers() {
         return zulip.wants_starred_count;
     }
 
-    function set_tippy_template_for_element({ elem, template }) {
-        const bogus_content = `(TIPPY would actually read from template ${template})`;
+    function tippy_enable({ elem, template }) {
+        const bogus_content = `(Zulip would actually read from template ${template})`;
         tippy(elem, { content: bogus_content });
+    }
+
+    function tippy_enable_all_messages(elem) {
+        tippy_enable({
+            elem,
+            template: "all-message-tooltip-content",
+        });
+    }
+
+    function tippy_enable_drafts(elem) {
+        tippy_enable({
+            elem,
+            template: "drafts-tooltip-content",
+        });
+    }
+
+    function tippy_enable_recent_conversations(elem) {
+        tippy_enable({
+            elem,
+            template: "recent-conversations-tooltip-content",
+        });
     }
 
     return {
@@ -64,8 +85,10 @@ export function build_handlers() {
         launch_mentions,
         launch_recent_conversations,
         launch_starred_messages,
-        set_tippy_template_for_element,
         starred_messages_menu,
+        tippy_enable_all_messages,
+        tippy_enable_drafts,
+        tippy_enable_recent_conversations,
         translate,
         wants_starred_count,
     };

@@ -21,7 +21,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({ drafts_menu, launch_drafts, set_tippy_template_for_element, translate, }) {
+export function fully_build({ drafts_menu, launch_drafts, tippy_enable_drafts, translate, }) {
     function repopulate_text() {
         drafts.main_link.span.innerText = translate("Drafts");
     }
@@ -33,16 +33,10 @@ export function fully_build({ drafts_menu, launch_drafts, set_tippy_template_for
             drafts_menu();
         });
     }
-    function tippy_enable() {
-        set_tippy_template_for_element({
-            elem: drafts.main_link.elem,
-            template: "drafts-tooltip-content",
-        });
-    }
     const drafts = build();
     wire_up_handlers();
     repopulate_text();
-    tippy_enable();
+    tippy_enable_drafts(drafts.main_link.elem);
     function update_unread_count(count) {
         drafts.unread_count.update_count(count);
     }

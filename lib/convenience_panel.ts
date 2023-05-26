@@ -3,7 +3,6 @@ import * as drafts_component from "./drafts_component.js";
 import * as mentions_component from "./mentions_component.js";
 import * as recent_conversations_component from "./recent_conversations_component.js";
 import * as starred_messages_component from "./starred_messages_component.js";
-import { TippyTemplateArgs } from "types";
 
 type Handlers = {
     readonly all_messages_menu: () => void;
@@ -13,7 +12,9 @@ type Handlers = {
     readonly launch_mentions: () => void;
     readonly launch_recent_conversations: () => void;
     readonly launch_starred_messages: () => void;
-    readonly set_tippy_template_for_element: (arg0: TippyTemplateArgs) => void;
+    readonly tippy_enable_all_messages: (arg0: HTMLElement) => void;
+    readonly tippy_enable_drafts: (arg0: HTMLElement) => void;
+    readonly tippy_enable_recent_conversations: (arg0: HTMLElement) => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
     readonly wants_starred_count: () => boolean;
@@ -56,8 +57,10 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_mentions,
         launch_recent_conversations,
         launch_starred_messages,
-        set_tippy_template_for_element,
         starred_messages_menu,
+        tippy_enable_all_messages,
+        tippy_enable_drafts,
+        tippy_enable_recent_conversations,
         translate,
         wants_starred_count,
     } = services;
@@ -65,20 +68,20 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
     const all_messages = all_messages_component.fully_build({
         all_messages_menu,
         launch_all_messages,
-        set_tippy_template_for_element,
+        tippy_enable_all_messages,
         translate,
     });
 
     const drafts = drafts_component.fully_build({
         drafts_menu,
         launch_drafts,
-        set_tippy_template_for_element,
+        tippy_enable_drafts,
         translate,
     });
 
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
-        set_tippy_template_for_element,
+        tippy_enable_recent_conversations,
         translate,
     });
 

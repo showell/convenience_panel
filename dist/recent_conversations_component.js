@@ -11,7 +11,7 @@ function build() {
         main_link,
     };
 }
-export function fully_build({ launch_recent_conversations, set_tippy_template_for_element, translate, }) {
+export function fully_build({ launch_recent_conversations, tippy_enable_recent_conversations, translate, }) {
     function repopulate_text() {
         recent.main_link.span.innerText = translate("Recent conversations");
     }
@@ -21,16 +21,10 @@ export function fully_build({ launch_recent_conversations, set_tippy_template_fo
             launch_recent_conversations();
         });
     }
-    function tippy_enable() {
-        set_tippy_template_for_element({
-            elem: recent.main_link.elem,
-            template: "recent-conversations-tooltip-content",
-        });
-    }
     const recent = build();
     wire_up_handlers();
     repopulate_text();
-    tippy_enable();
+    tippy_enable_recent_conversations(recent.main_link.elem);
     const widgets = {
         main_link: recent.main_link,
     };
