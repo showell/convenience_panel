@@ -82,7 +82,7 @@ export function fully_build({
     function tippy_enable() {
         set_tippy_template_for_element({
             elem: all_messages.main_link.elem,
-            template: "all-message-tooltip-content"
+            template: "all-message-tooltip-content",
         });
     }
 

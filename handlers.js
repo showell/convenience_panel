@@ -52,8 +52,8 @@ export function build_handlers() {
     }
 
     function set_tippy_template_for_element({ elem, template }) {
-        const bogus_content = `(TODO: read from template ${template})`;
-        elem.title = bogus_content;
+        const bogus_content = `(TIPPY would actually read from template ${template})`;
+        tippy(elem, { content: bogus_content });
     }
 
     return {
