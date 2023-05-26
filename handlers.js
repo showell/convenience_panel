@@ -54,6 +54,7 @@ export function build_handlers() {
     function tippy_enable({ elem, template }) {
         const bogus_content = `(Zulip would actually read from template ${template})`;
         tippy(elem, { content: bogus_content });
+        elem.setAttribute("data-tooltip-template-id", template);
     }
 
     function tippy_enable_all_messages(elem) {
