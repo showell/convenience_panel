@@ -60,7 +60,7 @@ export function build_handlers() {
             console.log(`(Zulip would actually read from template ${template})`);
         }
 
-        tippy(elem, { content, onShow });
+        tippy(elem, { content, delay: 100, onShow });
         elem.setAttribute("data-tooltip-template-id", template);
     }
 

@@ -10,6 +10,9 @@ import { build_handlers } from "./handlers.js";
     const panel = fully_build({ services });
     demo.append(panel.elem);
 
+    console.log("services get passed in", services);
+    console.log("and component provides these", panel);
+
     function make_test_button({ label, action }) {
         const button = document.createElement("button");
         button.innerText = label;
