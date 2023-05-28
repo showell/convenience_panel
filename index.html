@@ -39,13 +39,20 @@
             flex-direction: row;
         }
 
-        #output {
+        #middle_panel {
             padding-left: 50px;
+        }
+
+        #output {
             color: blue;
         }
 
         #test_stuff {
             padding-top: 20px;
+        }
+
+        h1 {
+            font-size: 100%;
         }
     </style>
     <script>
@@ -55,11 +62,18 @@
 </head>
 <body>
     <div id="demo">
-        <div id="left-sidebar">
-            <ul id="panel_container"></ul>
-            <div id="test_stuff"></div>
+        <div>
+            <h1> Component </h1>
+            <div id="left-sidebar">
+                <ul id="panel_container"></ul>
+            </div>
+            <div id="test_stuff">
+                <h1> Options </h1>
+            </div>
         </div>
-        <div id="output">
+        <div id="middle_panel">
+            <h1> Effects </h1>
+            <div id="output"></div>
         </div>
     </div>
 </body>
