@@ -13,6 +13,26 @@ import { build_handlers } from "./handlers.js";
     console.log("services get passed in", services);
     console.log("and component provides these", panel);
 
+    function make_test_checkbox({ label, no_action, yes_action }) {
+        const div = document.createElement("div");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+
+        const span = document.createElement("span");
+        span.innerText = label;
+
+        div.append(checkbox, span);
+
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                yes_action();
+            } else {
+                no_action();
+            }
+        });
+        document.body.append(div);
+    }
+
     function make_test_button({ label, action }) {
         const button = document.createElement("button");
         button.innerText = label;
@@ -39,11 +59,6 @@ import { build_handlers } from "./handlers.js";
         });
     }
 
-    make_test_button({
-        label: "Set unread counts",
-        action: set_unreads,
-    });
-    
 
     function clear_unreads() {
         panel.update_unread_count({
@@ -53,11 +68,6 @@ import { build_handlers } from "./handlers.js";
             drafts: 0,
         });
     }
-
-    make_test_button({
-        label: "Clear unread counts",
-        action: clear_unreads,
-    });
 
     function hide_stuff_for_screen_reader() {
         for (const elem of document.querySelectorAll("[aria-hidden]")) {
@@ -80,5 +90,11 @@ import { build_handlers } from "./handlers.js";
         action: turn_on_starred_counts,
     });
 
+
+    make_test_checkbox({
+        label: "Show unreads",
+        no_action: clear_unreads,
+        yes_action: set_unreads,
+    });
     window.panel = panel;
 }
