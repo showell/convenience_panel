@@ -1,34 +1,41 @@
 export function build_handlers() {
+    function output(s) {
+        const out = document.querySelector("#output");
+        const br = document.createElement("br");
+
+        out.append(s, br);
+    }
+
     function launch_all_messages() {
-        console.log("Launch All Messages");
+        output("Launch All Messages");
     }
 
     function launch_drafts() {
-        console.log("Launch Drafts");
+        output("Launch Drafts");
     }
 
     function launch_recent_conversations() {
-        console.log("Launch Recent Conversations");
+        output("Launch Recent Conversations");
     }
 
     function launch_mentions() {
-        console.log("Launch Mentions view");
+        output("Launch Mentions view");
     }
 
     function launch_starred_messages() {
-        console.log("Launch Starred Messages view");
+        output("Launch Starred Messages view");
     }
 
     function all_messages_menu() {
-        console.log("pop up All Messages vdot menu");
+        output("pop up All Messages vdot menu");
     }
 
     function drafts_menu() {
-        console.log("pop up Drafts vdot menu");
+        output("pop up Drafts vdot menu");
     }
 
     function starred_messages_menu() {
-        console.log("pop up Starred Messages vdot menu");
+        output("pop up Starred Messages vdot menu");
     }
 
     function translate(s) {
@@ -57,7 +64,7 @@ export function build_handlers() {
         }
 
         function onShow() {
-            console.log(`(Zulip would actually read from template ${template})`);
+            output(`(Zulip would actually read from template ${template})`);
         }
 
         tippy(elem, { content, delay: 100, onShow });

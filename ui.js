@@ -5,10 +5,10 @@ import { build_handlers } from "./handlers.js";
     zulip.lang = "en";
     zulip.wants_starred_count = false;
 
-    const demo = document.querySelector("#demo");
+    const panel_container = document.querySelector("#panel_container");
     const services = build_handlers();
     const panel = fully_build({ services });
-    demo.append(panel.elem);
+    panel_container.append(panel.elem);
 
     console.log("services get passed in", services);
     console.log("and component provides these", panel);
