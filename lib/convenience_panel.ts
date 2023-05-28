@@ -124,7 +124,6 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
     function update_for_starred_setting() {
         starred_messages.update_for_count_setting();
     }
-    
 
     const widgets = {
         all_messages,
