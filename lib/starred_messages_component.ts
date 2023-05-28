@@ -27,6 +27,7 @@ export type StarredMessagesWidget = {
     readonly li: HTMLElement;
     readonly repopulate_text: () => void;
     readonly update_unread_count: (count: number) => void;
+    readonly update_for_count_setting: () => void;
     readonly widgets: Widgets;
 };
 
@@ -81,11 +82,15 @@ export function fully_build({
     repopulate_text();
 
     function update_unread_count(count: number): void {
+        update_for_count_setting();
+        starred_messages.unread_count.update_count(count);
+    }
+
+    function update_for_count_setting(): void {
         if (wants_starred_count()) {
-            starred_messages.unread_count.update_count(count);
+            starred_messages.unread_count.show();
         } else {
-            // This is slightly hacky, but unread counts are hidden for 0.
-            starred_messages.unread_count.update_count(0);
+            starred_messages.unread_count.hide();
         }
     }
 
@@ -98,6 +103,7 @@ export function fully_build({
     return {
         li: starred_messages.li,
         repopulate_text,
+        update_for_count_setting,
         update_unread_count,
         widgets,
     };

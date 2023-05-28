@@ -47,6 +47,9 @@ export function fully_build({ services }) {
         mentions.update_unread_count(counts.mentions);
         starred_messages.update_unread_count(counts.starred_messages);
     }
+    function update_for_starred_setting() {
+        starred_messages.update_for_count_setting();
+    }
     const widgets = {
         all_messages,
         drafts,
@@ -58,6 +61,7 @@ export function fully_build({ services }) {
         elem: div,
         repopulate_text,
         update_unread_count,
+        update_for_starred_setting,
         widgets,
     };
 }

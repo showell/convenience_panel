@@ -38,12 +38,15 @@ export function fully_build({ launch_starred_messages, starred_messages_menu, tr
     wire_up_handlers();
     repopulate_text();
     function update_unread_count(count) {
+        update_for_count_setting();
+        starred_messages.unread_count.update_count(count);
+    }
+    function update_for_count_setting() {
         if (wants_starred_count()) {
-            starred_messages.unread_count.update_count(count);
+            starred_messages.unread_count.show();
         }
         else {
-            // This is slightly hacky, but unread counts are hidden for 0.
-            starred_messages.unread_count.update_count(0);
+            starred_messages.unread_count.hide();
         }
     }
     const widgets = {
@@ -54,6 +57,7 @@ export function fully_build({ launch_starred_messages, starred_messages_menu, tr
     return {
         li: starred_messages.li,
         repopulate_text,
+        update_for_count_setting,
         update_unread_count,
         widgets,
     };

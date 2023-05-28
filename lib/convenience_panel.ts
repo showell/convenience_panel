@@ -43,6 +43,7 @@ type ConveniencePanel = {
     elem: HTMLDivElement;
     repopulate_text: () => void;
     update_unread_count: (counts: UnreadCounts) => void;
+    update_for_starred_setting: () => void;
     widgets: PanelWidgets;
 };
 
@@ -120,6 +121,11 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         starred_messages.update_unread_count(counts.starred_messages);
     }
 
+    function update_for_starred_setting() {
+        starred_messages.update_for_count_setting();
+    }
+    
+
     const widgets = {
         all_messages,
         drafts,
@@ -132,6 +138,7 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         elem: div,
         repopulate_text,
         update_unread_count,
+        update_for_starred_setting,
         widgets,
     };
 }
