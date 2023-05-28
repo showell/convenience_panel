@@ -32,7 +32,7 @@ import { build_handlers } from "./handlers.js";
                 no_action();
             }
         });
-        document.body.append(div);
+        document.querySelector("#test_stuff").append(div);
     }
 
     function translate(lang) {

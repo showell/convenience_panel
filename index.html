@@ -31,8 +31,9 @@
         #left-sidebar {
             background-color: rgb(240, 240,240);
             width: 270px;
+            max-height: 120px;
         }
-    
+
         #demo {
             display: flex;
             flex-direction: row;
@@ -41,6 +42,10 @@
         #output {
             padding-left: 50px;
             color: blue;
+        }
+
+        #test_stuff {
+            padding-top: 20px;
         }
     </style>
     <script>
@@ -52,6 +57,7 @@
     <div id="demo">
         <div id="left-sidebar">
             <ul id="panel_container"></ul>
+            <div id="test_stuff"></div>
         </div>
         <div id="output">
         </div>
