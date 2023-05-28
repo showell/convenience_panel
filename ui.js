@@ -40,15 +40,18 @@ import { build_handlers } from "./handlers.js";
         document.body.append(button);
     }
 
-    function translate_to_french() {
-        zulip.lang = "fr";
+    function translate(lang) {
+        zulip.lang = lang;
         panel.repopulate_text({ translate: services.translate });
     }
 
-    make_test_button({
-        label: "French",
-        action: translate_to_french,
-    });
+    function translate_to_english() {
+        translate("en");
+    }
+
+    function translate_to_french() {
+        translate("fr");
+    }
 
     function set_unreads() {
         panel.update_unread_count({
@@ -58,7 +61,6 @@ import { build_handlers } from "./handlers.js";
             drafts: 40,
         });
     }
-
 
     function clear_unreads() {
         panel.update_unread_count({
@@ -90,11 +92,17 @@ import { build_handlers } from "./handlers.js";
         action: turn_on_starred_counts,
     });
 
+    make_test_checkbox({
+        label: "French",
+        no_action: translate_to_english,
+        yes_action: translate_to_french,
+    });
 
     make_test_checkbox({
         label: "Show unreads",
         no_action: clear_unreads,
         yes_action: set_unreads,
     });
+
     window.panel = panel;
 }
