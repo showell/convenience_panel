@@ -71,16 +71,19 @@ import { build_handlers } from "./handlers.js";
         });
     }
 
-    function hide_stuff_for_screen_reader() {
+    function set_aria_hidden_visibility(vis) {
         for (const elem of document.querySelectorAll("[aria-hidden]")) {
-            elem.style.visibility = "hidden";
+            elem.style.visibility = vis;
         }
     }
 
-    make_test_button({
-        label: "Hide aria-hidden elements",
-        action: hide_stuff_for_screen_reader,
-    });
+    function screen_reader_on() {
+        set_aria_hidden_visibility("hidden");
+    }
+
+    function screen_reader_off() {
+        set_aria_hidden_visibility("visible");
+    }
 
     function turn_on_starred_counts() {
         zulip.wants_starred_count = true;
@@ -102,6 +105,12 @@ import { build_handlers } from "./handlers.js";
         label: "Show unreads",
         no_action: clear_unreads,
         yes_action: set_unreads,
+    });
+
+    make_test_checkbox({
+        label: "Screen reader mode",
+        no_action: screen_reader_off,
+        yes_action: screen_reader_on,
     });
 
     window.panel = panel;
