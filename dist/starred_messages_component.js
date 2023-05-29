@@ -21,7 +21,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({ launch_starred_messages, starred_messages_menu, translate, wants_starred_count, }) {
+export function fully_build({ launch_starred_messages, starred_messages_menu, translate, }) {
     function repopulate_text() {
         starred_messages.main_link.span.innerText =
             translate("Starred messages");
@@ -37,17 +37,24 @@ export function fully_build({ launch_starred_messages, starred_messages_menu, tr
     const starred_messages = build();
     wire_up_handlers();
     repopulate_text();
-    function update_unread_count(count) {
-        update_for_count_setting();
-        starred_messages.unread_count.update_count(count);
-    }
-    function update_for_count_setting() {
-        if (wants_starred_count()) {
+    let last_count = 0;
+    let show_counts = false;
+    function update_count_visibility() {
+        if (show_counts) {
             starred_messages.unread_count.show();
         }
         else {
             starred_messages.unread_count.hide();
         }
+    }
+    function update_count(count) {
+        last_count = count;
+        update_count_visibility();
+        starred_messages.unread_count.update_count(count);
+    }
+    function update_for_count_setting(should_show_counts) {
+        show_counts = should_show_counts;
+        update_count(last_count);
     }
     const widgets = {
         main_link: starred_messages.main_link,
@@ -58,7 +65,7 @@ export function fully_build({ launch_starred_messages, starred_messages_menu, tr
         li: starred_messages.li,
         repopulate_text,
         update_for_count_setting,
-        update_unread_count,
+        update_count,
         widgets,
     };
 }

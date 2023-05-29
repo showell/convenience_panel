@@ -54,10 +54,6 @@ export function build_handlers() {
         return s;
     }
 
-    function wants_starred_count() {
-        return zulip.wants_starred_count;
-    }
-
     return {
         all_messages_menu,
         drafts_menu,
@@ -68,6 +64,5 @@ export function build_handlers() {
         launch_starred_messages,
         starred_messages_menu,
         translate,
-        wants_starred_count,
     };
 }

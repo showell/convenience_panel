@@ -14,7 +14,6 @@ type StarredBuildArgs = {
     readonly launch_starred_messages: () => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
-    readonly wants_starred_count: () => boolean;
 };
 
 type Widgets = {
@@ -26,8 +25,8 @@ type Widgets = {
 export type StarredMessagesWidget = {
     readonly li: HTMLElement;
     readonly repopulate_text: () => void;
-    readonly update_unread_count: (count: number) => void;
-    readonly update_for_count_setting: () => void;
+    readonly update_count: (count: number) => void;
+    readonly update_for_count_setting: (should_show_counts: boolean) => void;
     readonly widgets: Widgets;
 };
 
@@ -60,7 +59,6 @@ export function fully_build({
     launch_starred_messages,
     starred_messages_menu,
     translate,
-    wants_starred_count,
 }: StarredBuildArgs): StarredMessagesWidget {
     function repopulate_text() {
         starred_messages.main_link.span.innerText =
@@ -81,17 +79,25 @@ export function fully_build({
     wire_up_handlers();
     repopulate_text();
 
-    function update_unread_count(count: number): void {
-        update_for_count_setting();
-        starred_messages.unread_count.update_count(count);
-    }
+    let last_count = 0;
+    let show_counts = false;
 
-    function update_for_count_setting(): void {
-        if (wants_starred_count()) {
+    function update_count_visibility() {
+        if (show_counts) {
             starred_messages.unread_count.show();
         } else {
             starred_messages.unread_count.hide();
         }
+    }
+    function update_count(count: number): void {
+        last_count = count;
+        update_count_visibility();
+        starred_messages.unread_count.update_count(count);
+    }
+
+    function update_for_count_setting(should_show_counts: boolean): void {
+        show_counts = should_show_counts;
+        update_count(last_count);
     }
 
     const widgets = {
@@ -104,7 +110,7 @@ export function fully_build({
         li: starred_messages.li,
         repopulate_text,
         update_for_count_setting,
-        update_unread_count,
+        update_count,
         widgets,
     };
 }

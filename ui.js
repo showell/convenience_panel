@@ -33,7 +33,6 @@ import { build_handlers } from "./handlers.js";
     }
 
     zulip.lang = "en";
-    zulip.wants_starred_count = false;
 
     const panel_container = document.querySelector("#panel_container");
     const services = build_handlers();
@@ -52,8 +51,6 @@ import { build_handlers } from "./handlers.js";
 
     console.log("services get passed in", services);
     console.log("and component provides these", panel);
-
-    let showing_unreads = false;
 
     function make_test_checkbox({ label, no_action, yes_action }) {
         const div = document.createElement("div");
@@ -96,8 +93,15 @@ import { build_handlers } from "./handlers.js";
         panel.update_drafts_count(40);
     }
 
+    function clear_starred() {
+        panel.update_starred_count(0);
+    }
+
+    function set_starred() {
+        panel.update_starred_count(40);
+    }
+
     function show_unreads() {
-        showing_unreads = true;
         panel.update_unread_count({
             all_messages: 10,
             mentions: 20,
@@ -106,7 +110,6 @@ import { build_handlers } from "./handlers.js";
     }
 
     function clear_unreads() {
-        showing_unreads = false;
         panel.update_unread_count({
             all_messages: 0,
             mentions: 0,
@@ -128,18 +131,12 @@ import { build_handlers } from "./handlers.js";
         set_aria_hidden_visibility("visible");
     }
 
-    function turn_on_starred_counts() {
-        zulip.wants_starred_count = true;
-        if (showing_unreads) {
-            show_unreads();
-        }
+    function turn_off_starred_counts() {
+        panel.update_starred_count_setting(false);
     }
 
-    function turn_off_starred_counts() {
-        zulip.wants_starred_count = false;
-        if (showing_unreads) {
-            show_unreads();
-        }
+    function turn_on_starred_counts() {
+        panel.update_starred_count_setting(true);
     }
 
     make_test_checkbox({
@@ -161,14 +158,20 @@ import { build_handlers } from "./handlers.js";
     });
 
     make_test_checkbox({
-        label: "Show starred counts",
-        no_action: turn_off_starred_counts,
-        yes_action: turn_on_starred_counts,
-    });
-
-    make_test_checkbox({
         label: "Show unreads",
         no_action: clear_unreads,
         yes_action: show_unreads,
+    });
+
+    make_test_checkbox({
+        label: "Starred counts",
+        no_action: clear_starred,
+        yes_action: set_starred,
+    });
+
+    make_test_checkbox({
+        label: "Starred counts (allow)",
+        no_action: turn_off_starred_counts,
+        yes_action: turn_on_starred_counts,
     });
 }

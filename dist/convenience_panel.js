@@ -5,7 +5,7 @@ import * as recent_conversations_component from "./recent_conversations_componen
 import * as starred_messages_component from "./starred_messages_component.js";
 export function fully_build({ services }) {
     const div = document.createElement("div");
-    const { all_messages_menu, drafts_menu, launch_all_messages, launch_drafts, launch_mentions, launch_recent_conversations, launch_starred_messages, starred_messages_menu, translate, wants_starred_count, } = services;
+    const { all_messages_menu, drafts_menu, launch_all_messages, launch_drafts, launch_mentions, launch_recent_conversations, launch_starred_messages, starred_messages_menu, translate, } = services;
     const all_messages = all_messages_component.fully_build({
         all_messages_menu,
         launch_all_messages,
@@ -28,7 +28,6 @@ export function fully_build({ services }) {
         launch_starred_messages,
         starred_messages_menu,
         translate,
-        wants_starred_count,
     });
     div.append(all_messages.li, recent_conversations.li, mentions.li, starred_messages.li, drafts.li);
     function repopulate_text() {
@@ -41,13 +40,15 @@ export function fully_build({ services }) {
     function update_drafts_count(count) {
         drafts.update_count(count);
     }
+    function update_starred_count(count) {
+        starred_messages.update_count(count);
+    }
     function update_unread_count(counts) {
         all_messages.update_unread_count(counts.all_messages);
         mentions.update_unread_count(counts.mentions);
-        starred_messages.update_unread_count(counts.starred_messages);
     }
-    function update_for_starred_setting() {
-        starred_messages.update_for_count_setting();
+    function update_starred_count_setting(should_show_counts) {
+        starred_messages.update_for_count_setting(should_show_counts);
     }
     const widgets = {
         all_messages,
@@ -60,8 +61,9 @@ export function fully_build({ services }) {
         elem: div,
         repopulate_text,
         update_drafts_count,
+        update_starred_count,
         update_unread_count,
-        update_for_starred_setting,
+        update_starred_count_setting,
         widgets,
     };
 }

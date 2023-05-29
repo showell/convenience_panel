@@ -14,7 +14,6 @@ type Handlers = {
     readonly launch_starred_messages: () => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
-    readonly wants_starred_count: () => boolean;
 };
 
 type PanelBuildArgs = {
@@ -32,7 +31,6 @@ type PanelWidgets = {
 type UnreadCounts = {
     all_messages: number;
     mentions: number;
-    starred_messages: number;
 };
 
 type ConveniencePanel = {
@@ -40,7 +38,8 @@ type ConveniencePanel = {
     repopulate_text: () => void;
     update_unread_count: (counts: UnreadCounts) => void;
     update_drafts_count: (count: number) => void;
-    update_for_starred_setting: () => void;
+    update_starred_count: (count: number) => void;
+    update_starred_count_setting: (should_show_counts: boolean) => void;
     widgets: PanelWidgets;
 };
 
@@ -57,7 +56,6 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_starred_messages,
         starred_messages_menu,
         translate,
-        wants_starred_count,
     } = services;
 
     const all_messages = all_messages_component.fully_build({
@@ -86,7 +84,6 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_starred_messages,
         starred_messages_menu,
         translate,
-        wants_starred_count,
     });
 
     div.append(
@@ -109,14 +106,17 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         drafts.update_count(count);
     }
 
+    function update_starred_count(count: number): void {
+        starred_messages.update_count(count);
+    }
+
     function update_unread_count(counts: UnreadCounts): void {
         all_messages.update_unread_count(counts.all_messages);
         mentions.update_unread_count(counts.mentions);
-        starred_messages.update_unread_count(counts.starred_messages);
     }
 
-    function update_for_starred_setting() {
-        starred_messages.update_for_count_setting();
+    function update_starred_count_setting(should_show_counts: boolean) {
+        starred_messages.update_for_count_setting(should_show_counts);
     }
 
     const widgets = {
@@ -131,8 +131,9 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         elem: div,
         repopulate_text,
         update_drafts_count,
+        update_starred_count,
         update_unread_count,
-        update_for_starred_setting,
+        update_starred_count_setting,
         widgets,
     };
 }
