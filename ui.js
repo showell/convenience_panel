@@ -84,13 +84,20 @@ import { build_handlers } from "./handlers.js";
         translate("fr");
     }
 
+    function clear_drafts() {
+        panel.update_drafts_count(0);
+    }
+
+    function set_drafts() {
+        panel.update_drafts_count(40);
+    }
+
     function show_unreads() {
         showing_unreads = true;
         panel.update_unread_count({
             all_messages: 10,
             mentions: 20,
             starred_messages: 30,
-            drafts: 40,
         });
     }
 
@@ -100,7 +107,6 @@ import { build_handlers } from "./handlers.js";
             all_messages: 0,
             mentions: 0,
             starred_messages: 0,
-            drafts: 0,
         });
     }
 
@@ -131,6 +137,12 @@ import { build_handlers } from "./handlers.js";
             show_unreads();
         }
     }
+
+    make_test_checkbox({
+        label: "Draft counts",
+        no_action: clear_drafts,
+        yes_action: set_drafts,
+    });
 
     make_test_checkbox({
         label: "French",

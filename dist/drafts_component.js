@@ -39,13 +39,13 @@ export function fully_build({ drafts_menu, launch_drafts, translate, }) {
     const widgets = {
         main_link: drafts.main_link,
     };
-    function update_unread_count(count) {
+    function update_count(count) {
         drafts.unread_count.update_count(count);
     }
     return {
         li: drafts.li,
         repopulate_text,
-        update_unread_count,
+        update_count,
         widgets,
     };
 }

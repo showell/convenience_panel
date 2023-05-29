@@ -38,9 +38,11 @@ export function fully_build({ services }) {
         starred_messages.repopulate_text();
         drafts.repopulate_text();
     }
+    function update_drafts_count(count) {
+        drafts.update_count(count);
+    }
     function update_unread_count(counts) {
         all_messages.update_unread_count(counts.all_messages);
-        drafts.update_unread_count(counts.drafts);
         mentions.update_unread_count(counts.mentions);
         starred_messages.update_unread_count(counts.starred_messages);
     }
@@ -57,6 +59,7 @@ export function fully_build({ services }) {
     return {
         elem: div,
         repopulate_text,
+        update_drafts_count,
         update_unread_count,
         update_for_starred_setting,
         widgets,

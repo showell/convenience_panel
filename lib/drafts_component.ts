@@ -20,7 +20,7 @@ type Widgets = {
 export type DraftsWidget = {
     readonly li: HTMLElement;
     readonly repopulate_text: () => void;
-    readonly update_unread_count: (count: number) => void;
+    readonly update_count: (count: number) => void;
     readonly widgets: Widgets;
 };
 
@@ -76,14 +76,14 @@ export function fully_build({
         main_link: drafts.main_link,
     };
 
-    function update_unread_count(count: number): void {
+    function update_count(count: number): void {
         drafts.unread_count.update_count(count);
     }
 
     return {
         li: drafts.li,
         repopulate_text,
-        update_unread_count,
+        update_count,
         widgets,
     };
 }
