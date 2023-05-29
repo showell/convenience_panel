@@ -42,9 +42,13 @@ import { build_handlers } from "./handlers.js";
 
     panel_container.append(panel.elem);
 
-    tippy_enable_all_messages(panel.widgets.all_messages.widgets.main_link.elem);
+    tippy_enable_all_messages(
+        panel.widgets.all_messages.widgets.main_link.elem
+    );
     tippy_enable_all_messages(panel.widgets.drafts.widgets.main_link.elem);
-    tippy_enable_all_messages(panel.widgets.recent_conversations.widgets.main_link.elem);
+    tippy_enable_all_messages(
+        panel.widgets.recent_conversations.widgets.main_link.elem
+    );
 
     console.log("services get passed in", services);
     console.log("and component provides these", panel);
