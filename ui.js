@@ -2,13 +2,49 @@ import { fully_build } from "./dist/convenience_panel.js";
 import { build_handlers } from "./handlers.js";
 
 {
+    function tippy_enable({ elem, template }) {
+        function content() {
+            return template;
+        }
+
+        tippy(elem, { content, delay: 500 });
+        elem.setAttribute("data-tooltip-template-id", template);
+    }
+
+    function tippy_enable_all_messages(elem) {
+        tippy_enable({
+            elem,
+            template: "all-message-tooltip-content",
+        });
+    }
+
+    function tippy_enable_drafts(elem) {
+        tippy_enable({
+            elem,
+            template: "drafts-tooltip-content",
+        });
+    }
+
+    function tippy_enable_recent_conversations(elem) {
+        tippy_enable({
+            elem,
+            template: "recent-conversations-tooltip-content",
+        });
+    }
+
     zulip.lang = "en";
     zulip.wants_starred_count = false;
 
     const panel_container = document.querySelector("#panel_container");
     const services = build_handlers();
     const panel = fully_build({ services });
+    window.panel = panel;
+
     panel_container.append(panel.elem);
+
+    tippy_enable_all_messages(panel.widgets.all_messages.widgets.main_link.elem);
+    tippy_enable_all_messages(panel.widgets.drafts.widgets.main_link.elem);
+    tippy_enable_all_messages(panel.widgets.recent_conversations.widgets.main_link.elem);
 
     console.log("services get passed in", services);
     console.log("and component provides these", panel);
@@ -119,6 +155,4 @@ import { build_handlers } from "./handlers.js";
         no_action: clear_unreads,
         yes_action: show_unreads,
     });
-
-    window.panel = panel;
 }

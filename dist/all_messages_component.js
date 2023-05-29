@@ -21,7 +21,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({ all_messages_menu, launch_all_messages, tippy_enable_all_messages, translate, }) {
+export function fully_build({ all_messages_menu, launch_all_messages, translate, }) {
     function repopulate_text() {
         all_messages.main_link.span.innerText = translate("All messages");
     }
@@ -36,7 +36,6 @@ export function fully_build({ all_messages_menu, launch_all_messages, tippy_enab
     const all_messages = build();
     wire_up_handlers();
     repopulate_text();
-    tippy_enable_all_messages(all_messages.main_link.elem);
     function update_unread_count(count) {
         all_messages.unread_count.update_count(count);
     }

@@ -12,9 +12,6 @@ type Handlers = {
     readonly launch_mentions: () => void;
     readonly launch_recent_conversations: () => void;
     readonly launch_starred_messages: () => void;
-    readonly tippy_enable_all_messages: (arg0: HTMLElement) => void;
-    readonly tippy_enable_drafts: (arg0: HTMLElement) => void;
-    readonly tippy_enable_recent_conversations: (arg0: HTMLElement) => void;
     readonly starred_messages_menu: () => void;
     readonly translate: (s: string) => string;
     readonly wants_starred_count: () => boolean;
@@ -59,9 +56,6 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
         launch_recent_conversations,
         launch_starred_messages,
         starred_messages_menu,
-        tippy_enable_all_messages,
-        tippy_enable_drafts,
-        tippy_enable_recent_conversations,
         translate,
         wants_starred_count,
     } = services;
@@ -69,20 +63,17 @@ export function fully_build({ services }: PanelBuildArgs): ConveniencePanel {
     const all_messages = all_messages_component.fully_build({
         all_messages_menu,
         launch_all_messages,
-        tippy_enable_all_messages,
         translate,
     });
 
     const drafts = drafts_component.fully_build({
         drafts_menu,
         launch_drafts,
-        tippy_enable_drafts,
         translate,
     });
 
     const recent_conversations = recent_conversations_component.fully_build({
         launch_recent_conversations,
-        tippy_enable_recent_conversations,
         translate,
     });
 

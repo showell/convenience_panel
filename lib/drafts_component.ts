@@ -4,19 +4,24 @@ import {
     build_list_item,
     build_main_link,
     build_right_align_span,
+    MainLinkWidget,
 } from "./panel_helpers.js";
 
 type BuildArgs = {
     readonly drafts_menu: () => void;
     readonly launch_drafts: () => void;
-    readonly tippy_enable_drafts: (arg0: HTMLElement) => void;
     readonly translate: (s: string) => string;
+};
+
+type Widgets = {
+    readonly main_link: MainLinkWidget;
 };
 
 export type DraftsWidget = {
     readonly li: HTMLElement;
     readonly repopulate_text: () => void;
     readonly update_unread_count: (count: number) => void;
+    readonly widgets: Widgets;
 };
 
 function build() {
@@ -47,7 +52,6 @@ function build() {
 export function fully_build({
     drafts_menu,
     launch_drafts,
-    tippy_enable_drafts,
     translate,
 }: BuildArgs): DraftsWidget {
     function repopulate_text() {
@@ -67,7 +71,10 @@ export function fully_build({
 
     wire_up_handlers();
     repopulate_text();
-    tippy_enable_drafts(drafts.main_link.elem);
+
+    const widgets = {
+        main_link: drafts.main_link,
+    };
 
     function update_unread_count(count: number): void {
         drafts.unread_count.update_count(count);
@@ -77,5 +84,6 @@ export function fully_build({
         li: drafts.li,
         repopulate_text,
         update_unread_count,
+        widgets,
     };
 }

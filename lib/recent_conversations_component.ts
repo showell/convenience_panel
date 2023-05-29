@@ -6,7 +6,6 @@ import {
 
 type BuildArgs = {
     readonly launch_recent_conversations: () => void;
-    readonly tippy_enable_recent_conversations: (arg0: HTMLElement) => void;
     readonly translate: (s: string) => string;
 };
 
@@ -38,7 +37,6 @@ function build() {
 
 export function fully_build({
     launch_recent_conversations,
-    tippy_enable_recent_conversations,
     translate,
 }: BuildArgs) {
     function repopulate_text() {
@@ -56,7 +54,6 @@ export function fully_build({
 
     wire_up_handlers();
     repopulate_text();
-    tippy_enable_recent_conversations(recent.main_link.elem);
 
     const widgets = {
         main_link: recent.main_link,

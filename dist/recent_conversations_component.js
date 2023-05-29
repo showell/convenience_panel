@@ -11,7 +11,7 @@ function build() {
         main_link,
     };
 }
-export function fully_build({ launch_recent_conversations, tippy_enable_recent_conversations, translate, }) {
+export function fully_build({ launch_recent_conversations, translate, }) {
     function repopulate_text() {
         recent.main_link.span.innerText = translate("Recent conversations");
     }
@@ -24,7 +24,6 @@ export function fully_build({ launch_recent_conversations, tippy_enable_recent_c
     const recent = build();
     wire_up_handlers();
     repopulate_text();
-    tippy_enable_recent_conversations(recent.main_link.elem);
     const widgets = {
         main_link: recent.main_link,
     };

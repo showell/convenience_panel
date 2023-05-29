@@ -21,7 +21,7 @@ function build() {
         vdot_icon,
     };
 }
-export function fully_build({ drafts_menu, launch_drafts, tippy_enable_drafts, translate, }) {
+export function fully_build({ drafts_menu, launch_drafts, translate, }) {
     function repopulate_text() {
         drafts.main_link.span.innerText = translate("Drafts");
     }
@@ -36,7 +36,9 @@ export function fully_build({ drafts_menu, launch_drafts, tippy_enable_drafts, t
     const drafts = build();
     wire_up_handlers();
     repopulate_text();
-    tippy_enable_drafts(drafts.main_link.elem);
+    const widgets = {
+        main_link: drafts.main_link,
+    };
     function update_unread_count(count) {
         drafts.unread_count.update_count(count);
     }
@@ -44,6 +46,7 @@ export function fully_build({ drafts_menu, launch_drafts, tippy_enable_drafts, t
         li: drafts.li,
         repopulate_text,
         update_unread_count,
+        widgets,
     };
 }
 //# sourceMappingURL=drafts_component.js.map
